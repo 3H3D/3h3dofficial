@@ -54,11 +54,24 @@
             text-align: center;
         }
         .logo-text {
-            font-size: 64px;
+            font-size: 80px; /* Sedikit lebih besar */
             font-style: italic;
-            font-weight: bold;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            font-weight: 900; /* Lebih tebal */
+            letter-spacing: 6px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            /* Efek Cahaya Sinematik */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                         0 0 20px rgba(100, 100, 255, 0.5), 
+                         0 0 30px rgba(100, 100, 255, 0.3);
+            /* Animasi Masuk Perlahan */
+            animation: fadeInLogo 1.5s ease-in;
+        }
+        
+        /* Tambahkan animasi ini di bagian akhir <style> sebelum </style> */
+        @keyframes fadeInLogo {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .btn-listen {
             display: inline-block;
