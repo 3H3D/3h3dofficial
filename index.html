@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3H3D - Official Website</title>
+    <!-- Tambahan Penghubung Ikon Sosial Media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -18,25 +20,17 @@
             color: #ffffff;
             overflow: hidden;
         }
-        /* Latar Belakang Gambar Sinematik */
+        /* Latar Belakang */
         .hero {
             position: relative;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
-            background: url('URL_FOTO_ANDA_DISINI') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 20px;
-        }
-        /* Efek Gelap Transparan di atas Gambar */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            padding: 30px 50px;
+            background: #0b0b0b; /* Ganti dengan url('link_foto') jika ingin pakai foto */
         }
         /* Navigasi Tepat di Tengah Atas */
         nav {
@@ -62,33 +56,30 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            margin-bottom: auto;
-            margin-top: 25vh;
         }
         .logo-text {
             font-size: 64px;
             font-style: italic;
             font-weight: bold;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             margin-bottom: 20px;
         }
         .btn-listen {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 12px 30px;
             border: 1px solid #ffffff;
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
+            font-size: 12px;
             letter-spacing: 2px;
-            font-size: 13px;
-            background: transparent;
             transition: all 0.3s ease;
         }
         .btn-listen:hover {
-            background: #ffffff;
-            color: #000000;
+            background-color: #ffffff;
+            color: #0b0b0b;
         }
-        /* Footer / Media Sosial */
+        /* Footer Bawah */
         .footer {
             position: relative;
             z-index: 2;
@@ -97,40 +88,31 @@
             justify-content: space-between;
             align-items: center;
             font-size: 12px;
-            letter-spacing: 1px;
-            opacity: 0.8;
+            color: #aaaaaa;
         }
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
         .social-icons a {
             color: #ffffff;
+            font-size: 18px;
             text-decoration: none;
-            font-size: 14px;
+            transition: opacity 0.3s;
         }
-        @media (max-width: 768px) {
-            nav {
-                gap: 15px;
-                font-size: 11px;
-                letter-spacing: 1px;
-            }
-            .logo-text {
-                font-size: 40px;
-            }
+        .social-icons a:hover {
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
 
     <div class="hero">
-        <!-- Menu Navigasi Persis di Tengah Atas -->
+        <!-- Bagian Navigasi Atas -->
         <nav>
             <a href="#">Home</a>
             <a href="#">Video</a>
             <a href="#">Music</a>
-          
-            
         </nav>
 
         <!-- Bagian Tengah: Judul & Tombol -->
@@ -143,10 +125,10 @@
         <div class="footer">
             <span>© Ferwap music. All Rights Reserved | Privacy Policy | Terms Of Service.</span>
             <div class="social-icons">
-                <a href="https://www.facebook.com/3h3dofficial" target="_blank">FB</a>
-                <a href="https://www.instagram.com/3h3dofficial" target="_blank">IG</a>
-                <a href="https://www.youtube.com/@3h3dofficial" target="_blank">YT</a>
-                <a href="https://x.com/3h3dofficial" target="_blank">X</a>
+                <a href="https://www.facebook.com/3h3dofficial" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/3h3dofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@3h3dofficial" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/3h3dofficial" target="_blank"><i class="fab fa-x-twitter"></i></a>
             </div>
         </div>
     </div>
