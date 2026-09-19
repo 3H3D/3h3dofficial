@@ -34,12 +34,12 @@
             align-items: center;
         }
 
-        /* Navbar Default untuk Laptop / Komputer (Diperbesar ukuran font & jaraknya) */
+        /* Navbar Default untuk Laptop / Komputer */
         nav.desktop-nav {
             display: flex;
             gap: 45px;
             padding-top: 35px;
-            font-size: 16px; /* Diperbesar dari 13px */
+            font-size: 16px;
             letter-spacing: 3px;
             font-weight: bold;
             z-index: 10;
@@ -251,17 +251,17 @@
                 display: none !important;
             }
 
-            /* Tombol MENU di HP (Diperbesar ukuran font, tebal, & jarak) */
+            /* Tombol MENU di HP DIPERBESAR SANGAT JELAS */
             .menu-toggle {
                 display: block !important;
                 background: none;
                 border: none;
                 color: #ffffff;
-                font-size: 18px; /* Diperbesar dari 14px */
-                letter-spacing: 5px; /* Diperbesar agar lebih renggang & rapi */
+                font-size: 24px; /* Diperbesar menjadi 24px agar besar dan jelas */
+                letter-spacing: 6px;
                 font-weight: bold;
                 cursor: pointer;
-                padding-top: 30px;
+                padding-top: 35px;
                 z-index: 1001;
             }
 
@@ -279,18 +279,18 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 35px; /* Jarak antar teks menu diperbesar */
+                gap: 35px;
             }
 
             .mobile-fullscreen-menu.active {
                 display: flex !important;
             }
 
-            /* Teks menu di dalam HP saat dibuka (Diperbesar juga) */
+            /* Teks menu di dalam HP saat dibuka (Ikut diperbesar) */
             .mobile-fullscreen-menu a {
                 color: #ffffff;
                 text-decoration: none;
-                font-size: 24px; /* Diperbesar dari 22px */
+                font-size: 24px;
                 letter-spacing: 5px;
                 font-weight: bold;
                 transition: opacity 0.3s;
@@ -302,11 +302,11 @@
 
             .close-menu-btn {
                 position: absolute;
-                top: 30px;
+                top: 35px;
                 background: none;
                 border: none;
                 color: #ffffff;
-                font-size: 15px;
+                font-size: 16px;
                 letter-spacing: 3px;
                 cursor: pointer;
                 font-weight: bold;
@@ -334,14 +334,14 @@
     <!-- Tombol MENU khusus HP -->
     <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
 
-    <!-- Navigasi Biasa untuk Laptop / Komputer (Sudah diperbesar) -->
+    <!-- Navigasi Biasa untuk Laptop / Komputer -->
     <nav class="desktop-nav">
         <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
         <a onclick="openModal('videoModal')">VIDEO</a>
         <a onclick="openModal('musicModal')">MUSIC</a>
     </nav>
 
-    <!-- Menu Layar Penuh (Fullscreen) Khusus HP (Sudah diperbesar) -->
+    <!-- Menu Layar Penuh (Fullscreen) Khusus HP -->
     <div id="mobileMenu" class="mobile-fullscreen-menu">
         <button class="close-menu-btn" onclick="toggleMobileMenu()">TUTUP</button>
         <a href="#" onclick="toggleMobileMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
