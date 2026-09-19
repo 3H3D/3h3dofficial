@@ -54,7 +54,7 @@
             opacity: 0.7;
         }
 
-        /* Tombol MENU & Menu Fullscreen HP */
+        /* Tombol MENU & Menu Fullscreen HP (Disembunyikan di Laptop) */
         .menu-toggle, 
         .mobile-fullscreen-menu {
             display: none;
@@ -196,7 +196,7 @@
             color: #0b0b0b;
         }
 
-        /* Footer Disatukan (Background Dihilangkan, Menyatu dengan Halaman) */
+        /* Footer Menyatu dengan Latar Halaman */
         .footer {
             width: 100%;
             display: flex;
@@ -205,7 +205,7 @@
             padding: 25px 40px;
             font-size: 11px;
             color: #aaaaaa;
-            background: transparent; /* Latar belakang hitam pekat dihapus */
+            background: transparent;
             margin-top: auto;
         }
 
@@ -249,7 +249,7 @@
             transform: scale(1.1);
         }
 
-        /* Pengaturan Khusus HP */
+        /* Pengaturan Khusus HP (Layar di bawah 768px) */
         @media screen and (max-width: 768px) {
             nav.desktop-nav {
                 display: none !important;
@@ -260,8 +260,8 @@
                 background: none;
                 border: none;
                 color: #ffffff;
-                font-size: 22px;
-                letter-spacing: 5px;
+                font-size: 20px;
+                letter-spacing: 4px;
                 font-weight: bold;
                 cursor: pointer;
                 padding-top: 25px;
@@ -291,7 +291,7 @@
             .mobile-fullscreen-menu a {
                 color: #ffffff;
                 text-decoration: none;
-                font-size: 22px;
+                font-size: 20px;
                 letter-spacing: 4px;
                 font-weight: bold;
                 padding: 10px;
@@ -311,12 +311,13 @@
                 height: 48vw;
             }
 
+            /* Tata letak footer di HP agar tersusun rapi ke bawah dan menyatu */
             .footer {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
                 gap: 12px;
-                padding: 20px 15px;
+                padding: 25px 15px;
                 font-size: 9px;
             }
 
@@ -404,7 +405,7 @@
         </div>
     </div>
 
-    <!-- Footer Menyatu dengan Latar Halaman (Background Hitam Dihilangkan) -->
+    <!-- Footer Menyatu dengan Latar Halaman -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
