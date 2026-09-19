@@ -16,17 +16,18 @@
             box-sizing: border-box;
         }
 
+        /* Mengunci halaman agar pas di 1 layar penuh dan TIDAK BISA SCROLL sama sekali */
         html, body {
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
+            position: fixed;
             background: linear-gradient(135deg, rgba(11, 11, 11, 0.95), rgba(30, 30, 30, 0.85));
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
 
         body {
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -144,7 +145,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            max-height: 60vh;
+            max-height: 50vh;
             overflow-y: auto;
         }
 
@@ -181,7 +182,7 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Footer Bawah Transparan Tanpa Garis Pembatas */
+        /* Footer Bawah - Tanpa background pekat dan tanpa border garis sama sekali */
         .footer {
             position: relative;
             z-index: 2;
@@ -189,13 +190,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 15px 40px;
             font-size: 11px;
             color: #aaaaaa;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(8px);
-            /* Border-top dihapus agar bersih */
-            border-top: none; 
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
         .social-icons {
@@ -217,10 +217,10 @@
         /* Tombol Widget Cookie di Kiri Bawah */
         .cookie-icon-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 15px;
             left: 20px;
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
@@ -242,7 +242,7 @@
         @media screen and (max-width: 768px) {
             nav {
                 gap: 20px;
-                padding-top: 25px;
+                padding-top: 20px;
                 font-size: 11px;
             }
 
@@ -250,15 +250,15 @@
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
-                gap: 15px;
-                padding: 20px;
+                gap: 10px;
+                padding: 15px 20px;
             }
 
             .cookie-icon-btn {
-                bottom: 15px;
+                bottom: 10px;
                 left: 15px;
-                width: 34px;
-                height: 34px;
+                width: 32px;
+                height: 32px;
             }
         }
     </style>
