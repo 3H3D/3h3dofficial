@@ -265,7 +265,7 @@
                 z-index: 1001;
             }
 
-            /* Overlay Menu Fullscreen HP yang Rapi dan Tidak Bertumpuk */
+            /* Menu Fullscreen HP (Diatur agar benar-benar vertikal ke bawah) */
             .mobile-fullscreen-menu {
                 display: none;
                 position: fixed;
@@ -273,27 +273,30 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: rgba(11, 11, 11, 0.96);
+                background: rgba(11, 11, 11, 0.98);
                 backdrop-filter: blur(15px);
                 z-index: 1000;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 28px; /* Jarak aman antar menu agar tidak dempet */
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 25px !important;
             }
 
             .mobile-fullscreen-menu.active {
                 display: flex !important;
             }
 
-            /* Teks menu di dalam HP saat dibuka (Proporsional & Rapi) */
+            /* Teks menu di dalam HP saat dibuka (Tampil rapi berbaris ke bawah) */
             .mobile-fullscreen-menu a {
                 color: #ffffff;
                 text-decoration: none;
-                font-size: 20px;
+                font-size: 22px;
                 letter-spacing: 4px;
                 font-weight: bold;
                 padding: 10px;
+                display: block !important;
+                width: 100%;
+                text-align: center;
                 transition: opacity 0.3s;
             }
 
@@ -384,7 +387,7 @@
 
     <!-- Ikon Cookie di Kiri Bawah -->
     <div class="cookie-icon-btn" onclick="alert('Pengaturan Cookie & Privasi aktif untuk 3H3D.')" title="Privacy & Cookie Preferences">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c.3 0 .5-.2.5-.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
     </div>
 
     <!-- JavaScript untuk Navigasi & Modal -->
