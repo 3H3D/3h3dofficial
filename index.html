@@ -133,9 +133,10 @@
             align-items: center;
             width: 100%;
             max-width: 750px;
-            height: 90vh;
-            padding: 25px 20px 15px 20px;
+            height: 95vh;
+            padding: 20px 20px 10px 20px;
             position: relative;
+            justify-content: space-between;
         }
 
         /* Area Daftar Item Vertikal (Bisa Di-scroll ke Bawah) */
@@ -209,37 +210,45 @@
             color: #1c1410;
         }
 
-        /* Footer khusus di dalam Modal */
-        .modal-footer {
+        /* Footer khusus di dalam Modal (Berisi Link Bio + Footer Utama) */
+        .modal-footer-container {
             width: 100%;
-            padding-top: 15px;
+            padding-top: 12px;
             border-top: 1px solid rgba(212, 178, 147, 0.15);
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             gap: 8px;
             align-items: center;
-            font-size: 8.5px;
-            letter-spacing: 1px;
-            color: #b0a8a0;
-            text-align: center;
         }
 
-        .modal-footer .bio-link-text {
+        .modal-bio-link {
             color: #d4b293;
             text-decoration: none;
             font-weight: bold;
+            font-size: 9px;
             letter-spacing: 2px;
             transition: opacity 0.3s;
         }
 
-        .modal-footer .bio-link-text:hover {
+        .modal-bio-link:hover {
             opacity: 0.7;
         }
 
-        .modal-footer span {
+        .modal-footer-main {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 9px;
+            letter-spacing: 1px;
+            color: #b0a8a0;
+        }
+
+        .modal-footer-main span {
+            max-width: 75%;
             line-height: 1.4;
-            max-width: 90%;
+            text-align: left;
         }
 
         /* Footer Bawah Utama */
@@ -369,17 +378,18 @@
                 height: 48vw;
             }
 
-            .footer {
+            .footer, .modal-footer-main {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
                 gap: 10px;
-                padding: 15px 20px;
+                padding: 10px 15px;
             }
 
-            .footer span {
+            .footer span, .modal-footer-main span {
                 max-width: 100%;
                 font-size: 8px;
+                text-align: center;
             }
 
             .cookie-icon-btn {
@@ -420,6 +430,7 @@
     <div id="musicModal" class="modal" onclick="closeModalOutside(event, 'musicModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             
+            <!-- Daftar Musik yang bisa di-scroll -->
             <div class="vertical-scroll-container">
                 <div class="item-card">
                     <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
@@ -439,11 +450,20 @@
                 </div>
             </div>
 
-            <!-- Footer Modal Musik -->
-            <div class="modal-footer">
-                <a href="https://ffm.to/kwiregtori" target="_blank" class="bio-link-text">FFM.TO/KWIREGTORI</a>
-                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+            <!-- Footer Bawah di dalam Modal Musik (Link Bio + Copyright & Sosmed) -->
+            <div class="modal-footer-container">
+                <a href="https://ffm.to/kwiregtori" target="_blank" class="modal-bio-link">FFM.TO/KWIREGTORI</a>
+                <div class="modal-footer-main">
+                    <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -451,6 +471,7 @@
     <div id="videoModal" class="modal" onclick="closeModalOutside(event, 'videoModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             
+            <!-- Daftar Video yang bisa di-scroll -->
             <div class="vertical-scroll-container">
                 <div class="item-card">
                     <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
@@ -470,11 +491,20 @@
                 </div>
             </div>
 
-            <!-- Footer Modal Video -->
-            <div class="modal-footer">
-                <a href="https://ffm.to/kwiregtori" target="_blank" class="bio-link-text">FFM.TO/KWIREGTORI</a>
-                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+            <!-- Footer Bawah di dalam Modal Video (Link Bio + Copyright & Sosmed) -->
+            <div class="modal-footer-container">
+                <a href="https://ffm.to/kwiregtori" target="_blank" class="modal-bio-link">FFM.TO/KWIREGTORI</a>
+                <div class="modal-footer-main">
+                    <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
