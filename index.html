@@ -16,7 +16,7 @@
             box-sizing: border-box;
         }
 
-        /* Halaman bisa di-scroll secara normal dengan latar gradasi menyeluruh */
+        /* Pengaturan dasar HTML & Body */
         html, body {
             width: 100%;
             min-height: 100%;
@@ -24,6 +24,12 @@
             color: #ffffff;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
+        }
+
+        /* Kelas untuk mengunci scroll saat Home aktif */
+        body.no-scroll {
+            height: 100vh;
+            overflow: hidden;
         }
 
         body {
@@ -311,7 +317,6 @@
                 height: 48vw;
             }
 
-            /* Tata letak footer di HP agar tersusun rapi ke bawah dan menyatu */
             .footer {
                 flex-direction: column-reverse;
                 align-items: center;
@@ -330,7 +335,7 @@
         }
     </style>
 </head>
-<body>
+<body class="no-scroll"> <!-- Default awal Home terkunci scroll-nya -->
 
     <!-- Tombol MENU khusus HP -->
     <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
@@ -433,6 +438,14 @@
             views.forEach(el => el.style.display = 'none');
             
             document.getElementById(sectionId).style.display = 'flex';
+
+            // Jika membuka Home, kunci scroll. Jika membuka Video/Music, izinkan scroll.
+            if (sectionId === 'homeContent') {
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.classList.remove('no-scroll');
+            }
+
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
