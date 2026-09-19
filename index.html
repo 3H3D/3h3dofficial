@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>3H3D - Official Website</title>
     <!-- FontAwesome untuk Ikon Sosial Media -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,16 +16,21 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
             background: linear-gradient(135deg, rgba(11, 11, 11, 0.95), rgba(30, 30, 30, 0.85));
             color: #ffffff;
             font-family: Arial, sans-serif;
+        }
+
+        body {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            overflow-x: hidden;
         }
 
         /* Navbar Atas */
@@ -57,12 +62,13 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            max-width: 100%;
         }
 
-        /* Gaya Logo Font Gaul & Modern (Menggunakan clamp agar responsif otomatis) */
+        /* Gaya Logo Font Gaul & Modern */
         .logo-text {
             font-family: 'Rubik Mono One', sans-serif;
-            font-size: clamp(3rem, 10vw, 70px);
+            font-size: clamp(3rem, 12vw, 70px);
             letter-spacing: 4px;
             margin-bottom: 25px;
             color: #ffffff;
@@ -70,6 +76,7 @@
                          0 0 30px rgba(100, 100, 255, 0.6), 
                          0 0 45px rgba(100, 100, 255, 0.4);
             animation: fadeInLogo 1.5s ease-in;
+            word-break: break-word;
         }
 
         @keyframes fadeInLogo {
@@ -174,7 +181,7 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Footer Bawah Transparan */
+        /* Footer Bawah Transparan Tanpa Garis Pembatas */
         .footer {
             position: relative;
             z-index: 2;
@@ -183,11 +190,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            font-size: 12px;
+            font-size: 11px;
             color: #aaaaaa;
             background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(8px);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            /* Border-top dihapus agar bersih */
+            border-top: none; 
         }
 
         .social-icons {
@@ -197,7 +205,7 @@
 
         .social-icons a {
             color: #ffffff;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
             transition: opacity 0.3s;
         }
@@ -211,8 +219,8 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
@@ -230,33 +238,27 @@
             transform: scale(1.1);
         }
 
-        /* --- PENGATURAN RESPONSIF KHUSUS HP (MEDIA QUERIES) --- */
+        /* Pengaturan Responsif Khusus HP */
         @media screen and (max-width: 768px) {
             nav {
                 gap: 20px;
-                padding-top: 20px;
+                padding-top: 25px;
                 font-size: 11px;
             }
 
-            /* Footer berubah menjadi susunan vertikal ke bawah di HP agar tidak saling menabrak teksnya */
             .footer {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
                 gap: 15px;
-                padding: 15px 20px;
-                font-size: 11px;
-            }
-
-            .social-icons {
-                margin-bottom: 5px;
+                padding: 20px;
             }
 
             .cookie-icon-btn {
-                bottom: 10px;
-                left: 10px;
-                width: 35px;
-                height: 35px;
+                bottom: 15px;
+                left: 15px;
+                width: 34px;
+                height: 34px;
             }
         }
     </style>
@@ -306,10 +308,10 @@
 
     <!-- Footer Bawah -->
     <div class="footer">
-        <span>© Ferwap music. All Rights Reserved | Privacy Policy | Terms Of Service.</span>
+        <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
             <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
             <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
@@ -317,7 +319,7 @@
 
     <!-- Ikon Cookie di Kiri Bawah -->
     <div class="cookie-icon-btn" onclick="alert('Pengaturan Cookie & Privasi aktif untuk 3H3D.')" title="Privacy & Cookie Preferences">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c.3 0 .5-.2.5-.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c.3 0 .5-.2.5-.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
     </div>
 
     <!-- JavaScript untuk Menampilkan/Menutup Modal -->
