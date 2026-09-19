@@ -62,14 +62,14 @@
             display: none;
         }
 
-        /* Konten Utama - Memposisikan Logo dan Tombol Tepat di Tengah Layar */
+        /* Konten Utama - Tepat di Tengah Layar Laptop */
         .content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            flex-grow: 1; /* Mengisi ruang kosong di tengah secara presisi */
+            flex-grow: 1;
             width: 100%;
             z-index: 5;
         }
@@ -290,7 +290,7 @@
             transform: scale(1.1);
         }
 
-        /* Pengaturan Khusus HP */
+        /* Pengaturan Khusus HP (Agar benar-benar pas di tengah layar HP) */
         @media screen and (max-width: 768px) {
             nav.desktop-nav {
                 display: none !important;
@@ -305,8 +305,13 @@
                 letter-spacing: 5px;
                 font-weight: bold;
                 cursor: pointer;
-                padding-top: 30px;
+                padding-top: 25px;
                 z-index: 1001;
+            }
+
+            /* Penyesuaian khusus konten HP agar titik tengahnya memperhitungkan tombol MENU atas */
+            .content {
+                padding-top: 20px; 
             }
 
             .mobile-fullscreen-menu {
