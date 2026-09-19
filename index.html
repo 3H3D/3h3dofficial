@@ -16,52 +16,66 @@
             box-sizing: border-box;
         }
 
-        body {
+        /* Mengunci halaman utama agar pas di 1 layar penuh */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
             background: linear-gradient(135deg, rgba(11, 11, 11, 0.95), rgba(30, 30, 30, 0.85));
             color: #ffffff;
             font-family: Arial, sans-serif;
-            height: 100vh;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            overflow: hidden;
         }
 
-        /* Navbar Atas */
-        nav {
+        /* Navbar Default untuk Laptop / Komputer */
+        nav.desktop-nav {
             display: flex;
-            gap: 30px;
-            padding-top: 30px;
-            font-size: 13px;
-            letter-spacing: 2px;
+            gap: 45px;
+            padding-top: 35px;
+            font-size: 16px;
+            letter-spacing: 3px;
             font-weight: bold;
             z-index: 10;
         }
 
-        nav a {
+        nav.desktop-nav a {
             color: #ffffff;
             text-decoration: none;
             transition: opacity 0.3s;
             cursor: pointer;
         }
 
-        nav a:hover {
+        nav.desktop-nav a:hover {
             opacity: 0.7;
         }
 
-        /* Konten Tengah (Logo & Tombol) */
+        /* Tombol MENU & Menu Fullscreen HP */
+        .menu-toggle, 
+        .mobile-fullscreen-menu {
+            display: none !important;
+        }
+
+        /* Konten Utama */
         .content {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            padding: 20px;
+            max-width: 100%;
         }
 
-        /* Gaya Logo Font Gaul & Modern */
+        /* Gaya Logo */
         .logo-text {
             font-family: 'Rubik Mono One', sans-serif;
-            font-size: 70px;
+            font-size: clamp(3rem, 12vw, 70px);
             letter-spacing: 4px;
             margin-bottom: 25px;
             color: #ffffff;
@@ -69,6 +83,7 @@
                          0 0 30px rgba(100, 100, 255, 0.6), 
                          0 0 45px rgba(100, 100, 255, 0.4);
             animation: fadeInLogo 1.5s ease-in;
+            word-break: break-word;
         }
 
         @keyframes fadeInLogo {
@@ -96,7 +111,7 @@
             color: #0b0b0b;
         }
 
-        /* Modal / Kotak Daftar Menu (Video & Music) */
+        /* Modal / Kotak Popup Vertikal ke Bawah */
         .modal {
             display: none;
             position: fixed;
@@ -106,23 +121,21 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.94);
             backdrop-filter: blur(12px);
-            z-index: 1000;
+            z-index: 2000;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
 
         .modal-content {
             background: transparent;
-            border: none;
-            padding: 20px;
-            width: 100%;
-            max-width: 650px;
-            height: 88vh;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            max-width: 650px;
+            height: 88vh;
+            padding: 20px;
         }
 
         .modal-content h2 {
@@ -134,19 +147,19 @@
             flex-shrink: 0;
         }
 
-        /* Container Scroll Vertikal ke Bawah */
+        /* Area Daftar Item Vertikal (Bisa Di-scroll ke Bawah) */
         .vertical-scroll-container {
             width: 100%;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
             padding-right: 5px;
             padding-bottom: 30px;
         }
 
-        /* Styling Scrollbar Halus */
+        /* Scrollbar Halus */
         .vertical-scroll-container::-webkit-scrollbar {
             width: 6px;
         }
@@ -162,34 +175,34 @@
             width: 100%;
         }
 
-        /* Gaya Artwork Musik (Kotak) */
+        /* Gaya Khusus Musik (Artwork Kotak) */
         .music-art {
-            width: 280px;
-            height: 280px;
+            width: 320px;
+            height: 320px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             filter: sepia(0.3) contrast(1.1);
         }
 
-        /* Gaya Thumbnail Video (Landscape / Melebar) */
+        /* Gaya Khusus Video (Artwork Landscape / Melebar ke Samping) */
         .video-art {
             width: 100%;
-            max-width: 480px;
-            height: 270px;
+            max-width: 520px;
+            height: 295px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         /* Tombol Aksi di Bawah Artwork */
         .btn-action {
             display: inline-block;
-            padding: 9px 30px;
+            padding: 10px 35px;
             border: 1px solid rgba(255, 255, 255, 0.8);
             background-color: transparent;
             color: #ffffff;
@@ -205,26 +218,24 @@
             color: #0b0b0b;
         }
 
-        .close-btn {
+        .close-modal-btn {
             margin-top: 15px;
-            padding: 8px 25px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: none;
+            border: none;
             color: #888888;
-            cursor: pointer;
             font-size: 11px;
             letter-spacing: 2px;
+            cursor: pointer;
             text-transform: uppercase;
-            transition: 0.3s;
+            transition: color 0.3s;
             flex-shrink: 0;
         }
 
-        .close-btn:hover {
+        .close-modal-btn:hover {
             color: #ffffff;
-            border-color: #ffffff;
         }
 
-        /* Footer Bawah Transparan */
+        /* Footer Bawah */
         .footer {
             position: relative;
             z-index: 2;
@@ -232,12 +243,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            font-size: 12px;
+            padding: 15px 40px;
+            font-size: 11px;
             color: #aaaaaa;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(8px);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: transparent;
+            border: none;
         }
 
         .social-icons {
@@ -247,7 +257,7 @@
 
         .social-icons a {
             color: #ffffff;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
             transition: opacity 0.3s;
         }
@@ -256,13 +266,13 @@
             opacity: 0.7;
         }
 
-        /* Tombol Widget Cookie di Kiri Bawah */
+        /* Tombol Cookie di Kiri Bawah */
         .cookie-icon-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 15px;
             left: 20px;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
@@ -280,27 +290,107 @@
             transform: scale(1.1);
         }
 
-        /* Responsif untuk HP */
+        /* PENGATURAN KHUSUS HP (Max-width 768px) */
         @media screen and (max-width: 768px) {
+            nav.desktop-nav {
+                display: none !important;
+            }
+
+            .menu-toggle {
+                display: block !important;
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 22px;
+                letter-spacing: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                padding-top: 30px;
+                z-index: 1001;
+            }
+
+            .mobile-fullscreen-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(11, 11, 11, 0.98);
+                backdrop-filter: blur(15px);
+                z-index: 1000;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 25px !important;
+            }
+
+            .mobile-fullscreen-menu.active {
+                display: flex !important;
+            }
+
+            .mobile-fullscreen-menu a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 22px;
+                letter-spacing: 4px;
+                font-weight: bold;
+                padding: 10px;
+                display: block !important;
+                width: 100%;
+                text-align: center;
+                transition: opacity 0.3s;
+            }
+
+            .mobile-fullscreen-menu a:hover {
+                opacity: 0.6;
+            }
+
+            .music-art {
+                width: 250px;
+                height: 250px;
+            }
+
             .video-art {
                 width: 90vw;
-                height: 50.6vw;
+                height: 50vw;
             }
-            .music-art {
-                width: 240px;
-                height: 240px;
+
+            .footer {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+                padding: 15px 20px;
+            }
+
+            .cookie-icon-btn {
+                bottom: 10px;
+                left: 15px;
+                width: 32px;
+                height: 32px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menu Navigasi -->
-    <nav>
+    <!-- Tombol MENU khusus HP -->
+    <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
+
+    <!-- Navigasi Biasa untuk Laptop / Komputer -->
+    <nav class="desktop-nav">
         <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
         <a onclick="openModal('videoModal')">VIDEO</a>
         <a onclick="openModal('musicModal')">MUSIC</a>
     </nav>
+
+    <!-- Menu Layar Penuh (Fullscreen) Khusus HP -->
+    <div id="mobileMenu" class="mobile-fullscreen-menu">
+        <a href="#" onclick="toggleMobileMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
+        <a onclick="toggleMobileMenu(); openModal('musicModal');">MUSIC</a>
+        <a onclick="toggleMobileMenu(); openModal('videoModal');">VIDEO</a>
+    </div>
 
     <!-- Konten Utama -->
     <div class="content">
@@ -308,72 +398,76 @@
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- Modal Daftar Video (4 Video Landscape Vertikal) -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <h2>PILIHAN VIDEO</h2>
-            <div class="vertical-scroll-container">
-                <!-- Video 1 -->
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video Official 1" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-                <!-- Video 2 -->
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video Official 2" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-                <!-- Video 3 -->
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video Official 3" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-                <!-- Video 4 -->
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video Official 4" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-            </div>
-            <button class="close-btn" onclick="closeModal('videoModal')">TUTUP</button>
-        </div>
-    </div>
-
-    <!-- Modal Daftar Musik (4 Lagu Kotak Vertikal dengan Tema Selaras) -->
+    <!-- Modal Musik (4 Lagu dengan Artwork Selaras Tema Video) -->
     <div id="musicModal" class="modal">
         <div class="modal-content">
-            <h2>PLATFORM MUSIK</h2>
+            <h2>MUSIC</h2>
+            
             <div class="vertical-scroll-container">
                 <!-- Lagu 1 -->
                 <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Kwiregtori" class="music-art">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
                     <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
                 </div>
                 <!-- Lagu 2 -->
                 <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Sogdai-Ya" class="music-art">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
                     <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
                 </div>
                 <!-- Lagu 3 -->
                 <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Toru-Re" class="music-art">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
                     <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
                 </div>
                 <!-- Lagu 4 -->
                 <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Og-Wesa" class="music-art">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Music 4" class="music-art">
                     <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
                 </div>
             </div>
-            <button class="close-btn" onclick="closeModal('musicModal')">TUTUP</button>
+
+            <button class="close-modal-btn" onclick="closeModal('musicModal')">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Modal Video (4 Video Lanskap Vertikal) -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <h2>VIDEOS</h2>
+            
+            <div class="vertical-scroll-container">
+                <!-- Video 1 -->
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <!-- Video 2 -->
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <!-- Video 3 -->
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <!-- Video 4 -->
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+            </div>
+
+            <button class="close-modal-btn" onclick="closeModal('videoModal')">Tutup</button>
         </div>
     </div>
 
     <!-- Footer Bawah -->
     <div class="footer">
-        <span>© Ferwap music. All Rights Reserved | Privacy Policy | Terms Of Service.</span>
+        <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
             <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
             <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
@@ -381,14 +475,20 @@
 
     <!-- Ikon Cookie di Kiri Bawah -->
     <div class="cookie-icon-btn" onclick="alert('Pengaturan Cookie & Privasi aktif untuk 3H3D.')" title="Privacy & Cookie Preferences">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
     </div>
 
-    <!-- JavaScript untuk Menampilkan/Menutup Modal -->
+    <!-- JavaScript -->
     <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'flex';
         }
+        
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
