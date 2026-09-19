@@ -16,21 +16,19 @@
             box-sizing: border-box;
         }
 
-        /* Mengunci halaman agar pas di 1 layar penuh tanpa scroll */
+        /* Halaman diatur agar bisa di-scroll secara normal */
         html, body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
+            min-height: 100%;
             background: linear-gradient(135deg, rgba(11, 11, 11, 0.95), rgba(30, 30, 30, 0.85));
             color: #ffffff;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
         }
 
@@ -62,16 +60,17 @@
             display: none;
         }
 
-        /* Konten Utama (Default Laptop) */
+        /* Konten Utama (Logo & Tombol Listen Now di tengah awal) */
         .content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            flex-grow: 1;
             width: 100%;
+            min-height: calc(100vh - 120px); /* Mengisi tinggi layar awal */
             z-index: 5;
+            padding: 40px 20px;
         }
 
         /* Gaya Logo */
@@ -113,18 +112,13 @@
             color: #0b0b0b;
         }
 
-        /* Modal / Kotak Popup */
+        /* Modal / Kotak Popup yang Berubah Jadi Bagian Halaman Bawah (Bisa di-scroll) */
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+            display: none; /* Akan diubah jadi 'flex' atau 'block' via JavaScript saat menu diklik */
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.94);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 40px 20px 80px 20px;
+            flex-direction: column;
             align-items: center;
         }
 
@@ -136,37 +130,23 @@
             align-items: center;
             width: 100%;
             max-width: 650px;
-            height: 75vh;
-            padding: 20px;
         }
 
         .modal-content h2 {
             font-size: 18px;
             letter-spacing: 5px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             color: #aaaaaa;
             text-transform: uppercase;
-            flex-shrink: 0;
         }
 
-        /* Area Daftar Item Vertikal (Bisa Di-scroll) */
+        /* Area Daftar Item Vertikal */
         .vertical-scroll-container {
             width: 100%;
-            overflow-y: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
-            padding-right: 5px;
-            padding-bottom: 30px;
-        }
-
-        .vertical-scroll-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .vertical-scroll-container::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
+            gap: 50px;
         }
 
         .item-card {
@@ -180,7 +160,7 @@
             width: 280px;
             height: 280px;
             object-fit: cover;
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 4px;
+            border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
             margin-bottom: 12px;
@@ -217,7 +197,7 @@
         }
 
         .close-modal-btn {
-            margin-top: 15px;
+            margin-top: 30px;
             background: none;
             border: none;
             color: #888888;
@@ -226,28 +206,23 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: color 0.3s;
-            flex-shrink: 0;
         }
 
         .close-modal-btn:hover {
             color: #ffffff;
         }
 
-        /* Footer Bawah Terkunci Permanen */
+        /* Footer Bawah Sekarang Mengikuti Alur Scroll (Tidak Fixed Lagi) */
         .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            z-index: 3000;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 20px 40px;
             font-size: 11px;
             color: #aaaaaa;
-            background: rgba(11, 11, 11, 0.85);
-            backdrop-filter: blur(5px);
+            background: rgba(11, 11, 11, 0.95);
+            margin-top: auto;
         }
 
         .social-icons {
@@ -266,10 +241,10 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie di Kiri Bawah */
+        /* Tombol Cookie di Kiri Bawah (Ikut alur scroll halaman) */
         .cookie-icon-btn {
             position: fixed;
-            bottom: 60px;
+            bottom: 20px;
             left: 20px;
             width: 32px;
             height: 32px;
@@ -290,7 +265,7 @@
             transform: scale(1.1);
         }
 
-        /* Pengaturan Khusus HP (Agar benar-benar pas di tengah layar HP) */
+        /* Pengaturan Khusus HP */
         @media screen and (max-width: 768px) {
             nav.desktop-nav {
                 display: none !important;
@@ -307,12 +282,6 @@
                 cursor: pointer;
                 padding-top: 25px;
                 z-index: 1001;
-            }
-
-            /* Memaksa konten utama berada tepat di tengah layar HP secara presisi */
-            .content {
-                margin: auto;
-                padding-top: 0;
             }
 
             .mobile-fullscreen-menu {
@@ -363,12 +332,12 @@
                 align-items: center;
                 text-align: center;
                 gap: 8px;
-                padding: 10px 15px;
+                padding: 15px;
                 font-size: 9px;
             }
 
             .cookie-icon-btn {
-                bottom: 55px;
+                bottom: 15px;
                 left: 15px;
                 width: 28px;
                 height: 28px;
@@ -383,25 +352,25 @@
 
     <!-- Navigasi Komputer -->
     <nav class="desktop-nav">
-        <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
-        <a onclick="openModal('videoModal')">VIDEO</a>
-        <a onclick="openModal('musicModal')">MUSIC</a>
+        <a href="#" onclick="showHome(); return false;">HOME</a>
+        <a onclick="showSection('videoModal')">VIDEO</a>
+        <a onclick="showSection('musicModal')">MUSIC</a>
     </nav>
 
     <!-- Menu Fullscreen HP -->
     <div id="mobileMenu" class="mobile-fullscreen-menu">
-        <a href="#" onclick="toggleMobileMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
-        <a onclick="toggleMobileMenu(); openModal('musicModal');">MUSIC</a>
-        <a onclick="toggleMobileMenu(); openModal('videoModal');">VIDEO</a>
+        <a href="#" onclick="toggleMobileMenu(); showHome(); return false;">HOME</a>
+        <a onclick="toggleMobileMenu(); showSection('musicModal');">MUSIC</a>
+        <a onclick="toggleMobileMenu(); showSection('videoModal');">VIDEO</a>
     </div>
 
     <!-- Konten Utama (Logo & Tombol Listen Now) -->
-    <div class="content">
+    <div id="homeContent" class="content">
         <div class="logo-text">3H3D</div>
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- Modal Musik -->
+    <!-- Bagian Musik (Tampil saat diklik, bisa di-scroll bersama halaman) -->
     <div id="musicModal" class="modal">
         <div class="modal-content">
             <h2>MUSIC</h2>
@@ -423,11 +392,11 @@
                     <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
                 </div>
             </div>
-            <button class="close-modal-btn" onclick="closeModal('musicModal')">Tutup</button>
+            <button class="close-modal-btn" onclick="showHome()">Tutup / Kembali</button>
         </div>
     </div>
 
-    <!-- Modal Video -->
+    <!-- Bagian Video (Tampil saat diklik, bisa di-scroll bersama halaman) -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <h2>VIDEOS</h2>
@@ -449,11 +418,11 @@
                     <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
                 </div>
             </div>
-            <button class="close-modal-btn" onclick="closeModal('videoModal')">Tutup</button>
+            <button class="close-modal-btn" onclick="showHome()">Tutup / Kembali</button>
         </div>
     </div>
 
-    <!-- Footer Bawah Terkunci Permanen -->
+    <!-- Footer Bawah Mengikuti Alur Scroll Halaman -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
@@ -476,12 +445,20 @@
             mobileMenu.classList.toggle('active');
         }
 
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
+        function showSection(sectionId) {
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('musicModal').style.display = 'none';
+            document.getElementById('videoModal').style.display = 'none';
+            
+            document.getElementById(sectionId).style.display = 'flex';
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+
+        function showHome() {
+            document.getElementById('musicModal').style.display = 'none';
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('homeContent').style.display = 'flex';
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 
