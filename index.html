@@ -232,132 +232,309 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie di Kiri Bawah */
+        /* Tombol Cookie Gaya Icons8 Baru (Kotak Sudut Membulat, Background Hitam, Ikon Putih) */
         .cookie-icon-btn {
             position: fixed;
             bottom: 15px;
             left: 20px;
-            width: 34px;
-            height: 34px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            background-color: #0d0d0d; /* Background hitam gelap seperti referensi */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Border tipis halus */
+            border-radius: 10px; /* Sudut melengkung khas kotak icons8 */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #ffffff;
+            color: #ffffff; /* Ikon warna putih */
             cursor: pointer;
             z-index: 999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            transition: transform 0.3s, border-color 0.3s;
         }
 
         .cookie-icon-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
+            border-color: rgba(212, 178, 147, 0.6);
         }
 
-        /* --- STYLING MODAL / POPUP COOKIE BARU --- */
-        .cookie-modal {
+        /* --- STYLING MODAL / POPUP COOKIE (GAYA ONETRUST) --- */
+        .ot-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.65);
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
-        .cookie-modal.active {
+        .ot-modal.active {
             display: flex;
         }
 
-        .cookie-modal-content {
-            background: #251b16;
-            border: 1px solid rgba(212, 178, 147, 0.4);
-            border-radius: 6px;
+        .ot-modal-container {
+            background: #ffffff;
+            color: #222222;
+            border-radius: 4px;
             width: 100%;
-            max-width: 450px;
-            padding: 30px;
-            text-align: left;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        .cookie-modal-content h3 {
-            font-family: 'Rubik Mono One', sans-serif;
-            font-size: 14px;
-            color: #d4b293;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .cookie-modal-content p {
-            font-size: 12px;
-            line-height: 1.6;
-            color: #d0c8c0;
-            margin-bottom: 20px;
-        }
-
-        .cookie-option {
+        /* Header Modal */
+        .ot-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
-            color: #ffffff;
-            margin-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 8px;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        .cookie-option input[type="checkbox"] {
-            accent-color: #d4b293;
-            width: 16px;
-            height: 16px;
+        .ot-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            color: #000;
+        }
+
+        .ot-logo-icon {
+            background: #e61c24;
+            color: white;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 3px 5px;
+            border-radius: 2px;
+            letter-spacing: -1px;
+        }
+
+        .ot-close-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #555;
+            padding: 5px;
+        }
+
+        .ot-close-btn:hover {
+            color: #000;
+        }
+
+        /* Body Modal */
+        .ot-body {
+            padding: 25px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .ot-body h2 {
+            font-size: 18px;
+            color: #111;
+            margin-bottom: 12px;
+        }
+
+        .ot-body p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .ot-link {
+            color: #0056b3;
+            text-decoration: underline;
             cursor: pointer;
         }
 
-        .cookie-buttons {
+        .ot-section-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #111;
+            margin: 20px 0 12px 0;
+        }
+
+        /* Accordion List Item */
+        .ot-accordion {
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            background: #fff;
+        }
+
+        .ot-acc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .ot-acc-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .ot-acc-icon {
+            font-size: 11px;
+            color: #666;
+            transition: transform 0.2s;
+        }
+
+        .ot-accordion.open .ot-acc-icon {
+            transform: rotate(90deg);
+        }
+
+        .ot-acc-content {
+            display: none;
+            padding: 0 15px 15px 38px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 5px;
+            padding-top: 10px;
+        }
+
+        .ot-accordion.open .ot-acc-content {
+            display: block;
+        }
+
+        /* Toggle Switch Gaya Modern */
+        .ot-switch-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ot-always-active {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0070c0;
+        }
+
+        .ot-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .ot-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .ot-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .ot-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .ot-slider {
+            background-color: #12803b;
+        }
+
+        input:checked + .ot-slider:before {
+            transform: translateX(20px);
+        }
+
+        input:disabled + .ot-slider {
+            background-color: #b0b0b0;
+            cursor: not-allowed;
+        }
+
+        /* Footer Modal & Tombol Aksi */
+        .ot-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: #f9f9f9;
+            border-top: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .ot-action-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 25px;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .cookie-btn {
+        .ot-btn {
             flex: 1;
-            padding: 10px;
-            text-align: center;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            padding: 10px 15px;
+            font-size: 12px;
             font-weight: bold;
-            border-radius: 2px;
+            border-radius: 3px;
             cursor: pointer;
-            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid #111;
+            transition: background 0.2s;
         }
 
-        .cookie-btn-accept {
-            background-color: #d4b293;
-            color: #1c1410;
-            border: 1px solid #d4b293;
+        .ot-btn-reject {
+            background: #ffffff;
+            color: #111;
         }
 
-        .cookie-btn-accept:hover {
-            opacity: 0.85;
+        .ot-btn-reject:hover {
+            background: #f0f0f0;
         }
 
-        .cookie-btn-close {
-            background-color: transparent;
-            color: #d4b293;
-            border: 1px solid rgba(212, 178, 147, 0.8);
+        .ot-btn-confirm {
+            background: #111;
+            color: #ffffff;
         }
 
-        .cookie-btn-close:hover {
-            background-color: rgba(212, 178, 147, 0.1);
+        .ot-btn-confirm:hover {
+            background: #333;
+        }
+
+        .ot-powered {
+            font-size: 10px;
+            color: #777;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .ot-powered b {
+            font-size: 9px;
+            letter-spacing: -0.5px;
         }
 
         /* RESPONSIF HP */
@@ -437,8 +614,22 @@
             .cookie-icon-btn {
                 bottom: 15px;
                 left: 15px;
-                width: 30px;
-                height: 30px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .ot-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .ot-powered {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            .ot-action-buttons {
+                max-width: 100%;
             }
         }
     </style>
@@ -525,33 +716,133 @@
         </div>
     </div>
 
-    <!-- Tombol Cookie di Kiri Bawah -->
-    <div class="cookie-icon-btn" onclick="toggleCookieModal()" title="Privacy & Cookie Preferences">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
+    <!-- Tombol Cookie Baru (Gaya Outline Putih dengan Background Kotak Gelap) -->
+    <div class="cookie-icon-btn" onclick="toggleCookieModal()" title="Privacy Preference Center">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 0 0-7.25 16.95c.34.34.45.84.3 1.31l-.47 1.43a1 1 0 0 0 1.26 1.26l1.43-.47c.47-.15.97-.04 1.31.3A10 10 0 1 0 12 2zm0 18a8 8 0 1 1 5.66-13.66 1 1 0 0 0-.29-.7 8 8 0 0 0-9.84 0 1 1 0 0 0-.29.7A8 8 0 0 1 12 20zm-3-11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 2a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-4 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-2a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-2-6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+        </svg>
     </div>
 
-    <!-- Modal Pop-up Pengaturan Cookie -->
-    <div id="cookieModal" class="cookie-modal">
-        <div class="cookie-modal-content">
-            <h3>PRIVACY & COOKIES</h3>
-            <p>Kami menggunakan cookie untuk meningkatkan pengalaman penelusuran Anda, menampilkan konten yang dipersonalisasi, dan menganalisis traffic situs web 3H3D.</p>
-            
-            <div class="cookie-option">
-                <span>Cookie Esensial (Wajib)</span>
-                <input type="checkbox" checked disabled>
-            </div>
-            <div class="cookie-option">
-                <span>Cookie Analitik & Kinerja</span>
-                <input type="checkbox" id="analyticsCookie" checked>
-            </div>
-            <div class="cookie-option">
-                <span>Cookie Personalisasi & Media Sosial</span>
-                <input type="checkbox" id="marketingCookie" checked>
+    <!-- MODAL POP-UP PRIVACY PREFERENCE CENTER -->
+    <div id="cookieModal" class="ot-modal">
+        <div class="ot-modal-container">
+            <!-- Header -->
+            <div class="ot-header">
+                <div class="ot-logo-area">
+                    <span class="ot-logo-icon">OS</span> OneTrust
+                </div>
+                <button class="ot-close-btn" onclick="toggleCookieModal()"><i class="fas fa-times"></i></button>
             </div>
 
-            <div class="cookie-buttons">
-                <button class="cookie-btn cookie-btn-accept" onclick="saveCookiePreferences()">Simpan Preferensi</button>
-                <button class="cookie-btn cookie-btn-close" onclick="toggleCookieModal()">Tutup</button>
+            <!-- Body -->
+            <div class="ot-body">
+                <h2>Privacy Preference Center</h2>
+                <p>When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences, or your device and is mostly used to make the site work as you expect. The information does not usually identify you directly, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to learn more and change our default settings. Blocking some types of cookies may impact your experience of the site and the services we are able to offer. <span class="ot-link">More information</span></p>
+
+                <div class="ot-section-title">Manage Consent Preferences</div>
+
+                <!-- Kategori 1: Analytics -->
+                <div class="ot-accordion" id="acc1">
+                    <div class="ot-acc-header" onclick="toggleAccordion('acc1')">
+                        <div class="ot-acc-title-area">
+                            <i class="fas fa-chevron-right ot-acc-icon"></i>
+                            <span>Analytics & performance</span>
+                        </div>
+                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
+                            <label class="ot-switch">
+                                <input type="checkbox" id="chkAnalytics" checked>
+                                <span class="ot-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ot-acc-content">
+                        Cookie ini membantu kami mengukur lalu lintas kunjungan dan memahami bagaimana pengunjung berinteraksi dengan situs web 3H3D agar kami dapat terus meningkatkan kinerjanya.
+                    </div>
+                </div>
+
+                <!-- Kategori 2: Functional -->
+                <div class="ot-accordion" id="acc2">
+                    <div class="ot-acc-header" onclick="toggleAccordion('acc2')">
+                        <div class="ot-acc-title-area">
+                            <i class="fas fa-chevron-right ot-acc-icon"></i>
+                            <span>Functional</span>
+                        </div>
+                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
+                            <label class="ot-switch">
+                                <input type="checkbox" id="chkFunctional" checked>
+                                <span class="ot-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ot-acc-content">
+                        Memungkinkan situs web untuk menyediakan fungsionalitas dan personalisasi yang ditingkatkan, seperti mengingat preferensi bahasa atau wilayah Anda.
+                    </div>
+                </div>
+
+                <!-- Kategori 3: Essential -->
+                <div class="ot-accordion" id="acc3">
+                    <div class="ot-acc-header" onclick="toggleAccordion('acc3')">
+                        <div class="ot-acc-title-area">
+                            <i class="fas fa-chevron-right ot-acc-icon"></i>
+                            <span>Essential</span>
+                        </div>
+                        <div class="ot-switch-wrap">
+                            <span class="ot-always-active">Always Active</span>
+                        </div>
+                    </div>
+                    <div class="ot-acc-content">
+                        Cookie ini sangat diperlukan agar situs web dapat berfungsi dan tidak dapat dimatikan di sistem kami. Cookie ini biasanya hanya disetel sebagai respons atas tindakan yang Anda buat.
+                    </div>
+                </div>
+
+                <!-- Kategori 4: Social Media -->
+                <div class="ot-accordion" id="acc4">
+                    <div class="ot-acc-header" onclick="toggleAccordion('acc4')">
+                        <div class="ot-acc-title-area">
+                            <i class="fas fa-chevron-right ot-acc-icon"></i>
+                            <span>Social Media</span>
+                        </div>
+                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
+                            <label class="ot-switch">
+                                <input type="checkbox" id="chkSocial" checked>
+                                <span class="ot-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ot-acc-content">
+                        Cookie ini diatur oleh layanan media sosial yang telah kami tambahkan ke situs untuk memungkinkan Anda membagikan konten kami dengan teman dan jaringan Anda.
+                    </div>
+                </div>
+
+                <!-- Kategori 5: Marketing -->
+                <div class="ot-accordion" id="acc5">
+                    <div class="ot-acc-header" onclick="toggleAccordion('acc5')">
+                        <div class="ot-acc-title-area">
+                            <i class="fas fa-chevron-right ot-acc-icon"></i>
+                            <span>Marketing and Advertising</span>
+                        </div>
+                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
+                            <label class="ot-switch">
+                                <input type="checkbox" id="chkMarketing" checked>
+                                <span class="ot-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ot-acc-content">
+                        Cookie ini mungkin disetel melalui situs web kami oleh mitra iklan kami untuk membangun profil minat Anda dan menampilkan iklan yang relevan di situs lain.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="ot-footer">
+                <div class="ot-action-buttons">
+                    <button class="ot-btn ot-btn-reject" onclick="rejectAllCookies()">Reject All</button>
+                    <button class="ot-btn ot-btn-confirm" onclick="confirmChoices()">Confirm My Choices</button>
+                </div>
+                <div class="ot-powered">
+                    Powered by <b><i class="fas fa-shield-alt"></i> OneTrust</b>
+                </div>
             </div>
         </div>
     </div>
@@ -585,15 +876,31 @@
             }
         }
 
-        /* Fungsi untuk membuka/menutup modal pop-up cookie */
+        /* Fungsi Membuka / Menutup Modal Popup */
         function toggleCookieModal() {
             const modal = document.getElementById('cookieModal');
             modal.classList.toggle('active');
         }
 
-        /* Fungsi untuk menyimpan preferensi cookie */
-        function saveCookiePreferences() {
-            alert('Preferensi Cookie & Privasi Anda untuk 3H3D berhasil disimpan.');
+        /* Fungsi Accordion untuk Membuka Detail Kategori */
+        function toggleAccordion(id) {
+            const acc = document.getElementById(id);
+            acc.classList.toggle('open');
+        }
+
+        /* Tombol Reject All */
+        function rejectAllCookies() {
+            document.getElementById('chkAnalytics').checked = false;
+            document.getElementById('chkFunctional').checked = false;
+            document.getElementById('chkSocial').checked = false;
+            document.getElementById('chkMarketing').checked = false;
+            alert('Semua cookie opsional berhasil ditolak.');
+            toggleCookieModal();
+        }
+
+        /* Tombol Confirm My Choices */
+        function confirmChoices() {
+            alert('Preferensi pilihan cookie Anda berhasil disimpan.');
             toggleCookieModal();
         }
     </script>
