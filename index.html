@@ -16,7 +16,7 @@
             box-sizing: border-box;
         }
 
-        /* Halaman diatur agar bisa di-scroll secara normal */
+        /* Halaman bisa di-scroll secara normal */
         html, body {
             width: 100%;
             min-height: 100%;
@@ -60,7 +60,7 @@
             display: none;
         }
 
-        /* Konten Utama (Logo & Tombol Listen Now di tengah awal) */
+        /* Konten Utama (Home) */
         .content {
             display: flex;
             flex-direction: column;
@@ -68,7 +68,7 @@
             justify-content: center;
             text-align: center;
             width: 100%;
-            min-height: calc(100vh - 120px); /* Mengisi tinggi layar awal */
+            min-height: calc(100vh - 120px);
             z-index: 5;
             padding: 40px 20px;
         }
@@ -112,17 +112,17 @@
             color: #0b0b0b;
         }
 
-        /* Modal / Kotak Popup yang Berubah Jadi Bagian Halaman Bawah (Bisa di-scroll) */
-        .modal {
-            display: none; /* Akan diubah jadi 'flex' atau 'block' via JavaScript saat menu diklik */
+        /* Bagian Section (Video / Music) yang menyatu dalam satu halaman scroll */
+        .page-section {
+            display: none; /* Muncul saat diklik melalui navigasi */
             width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 40px 20px 80px 20px;
+            background: transparent;
+            padding: 50px 20px 80px 20px;
             flex-direction: column;
             align-items: center;
         }
 
-        .modal-content {
+        .section-content {
             background: transparent;
             text-align: center;
             display: flex;
@@ -132,10 +132,10 @@
             max-width: 650px;
         }
 
-        .modal-content h2 {
+        .section-content h2 {
             font-size: 18px;
             letter-spacing: 5px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #aaaaaa;
             text-transform: uppercase;
         }
@@ -196,23 +196,7 @@
             color: #0b0b0b;
         }
 
-        .close-modal-btn {
-            margin-top: 30px;
-            background: none;
-            border: none;
-            color: #888888;
-            font-size: 11px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .close-modal-btn:hover {
-            color: #ffffff;
-        }
-
-        /* Footer Bawah Sekarang Mengikuti Alur Scroll (Tidak Fixed Lagi) */
+        /* Footer Bawah */
         .footer {
             width: 100%;
             display: flex;
@@ -241,7 +225,7 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie di Kiri Bawah (Ikut alur scroll halaman) */
+        /* Tombol Cookie di Kiri Bawah */
         .cookie-icon-btn {
             position: fixed;
             bottom: 20px;
@@ -352,27 +336,27 @@
 
     <!-- Navigasi Komputer -->
     <nav class="desktop-nav">
-        <a href="#" onclick="showHome(); return false;">HOME</a>
-        <a onclick="showSection('videoModal')">VIDEO</a>
-        <a onclick="showSection('musicModal')">MUSIC</a>
+        <a href="#" onclick="showSection('homeContent'); return false;">HOME</a>
+        <a href="#" onclick="showSection('videoSection'); return false;">VIDEO</a>
+        <a href="#" onclick="showSection('musicSection'); return false;">MUSIC</a>
     </nav>
 
     <!-- Menu Fullscreen HP -->
     <div id="mobileMenu" class="mobile-fullscreen-menu">
-        <a href="#" onclick="toggleMobileMenu(); showHome(); return false;">HOME</a>
-        <a onclick="toggleMobileMenu(); showSection('musicModal');">MUSIC</a>
-        <a onclick="toggleMobileMenu(); showSection('videoModal');">VIDEO</a>
+        <a href="#" onclick="toggleMobileMenu(); showSection('homeContent'); return false;">HOME</a>
+        <a href="#" onclick="toggleMobileMenu(); showSection('musicSection'); return false;">MUSIC</a>
+        <a href="#" onclick="toggleMobileMenu(); showSection('videoSection'); return false;">VIDEO</a>
     </div>
 
-    <!-- Konten Utama (Logo & Tombol Listen Now) -->
-    <div id="homeContent" class="content">
+    <!-- Konten Utama (Home) -->
+    <div id="homeContent" class="content page-view">
         <div class="logo-text">3H3D</div>
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- Bagian Musik (Tampil saat diklik, bisa di-scroll bersama halaman) -->
-    <div id="musicModal" class="modal">
-        <div class="modal-content">
+    <!-- Bagian Musik -->
+    <div id="musicSection" class="page-section page-view">
+        <div class="section-content">
             <h2>MUSIC</h2>
             <div class="vertical-scroll-container">
                 <div class="item-card">
@@ -392,13 +376,12 @@
                     <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
                 </div>
             </div>
-            <button class="close-modal-btn" onclick="showHome()">Tutup / Kembali</button>
         </div>
     </div>
 
-    <!-- Bagian Video (Tampil saat diklik, bisa di-scroll bersama halaman) -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
+    <!-- Bagian Video -->
+    <div id="videoSection" class="page-section page-view">
+        <div class="section-content">
             <h2>VIDEOS</h2>
             <div class="vertical-scroll-container">
                 <div class="item-card">
@@ -418,11 +401,10 @@
                     <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
                 </div>
             </div>
-            <button class="close-modal-btn" onclick="showHome()">Tutup / Kembali</button>
         </div>
     </div>
 
-    <!-- Footer Bawah Mengikuti Alur Scroll Halaman -->
+    <!-- Footer Bawah Menjadi Satu Kesatuan -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
@@ -446,18 +428,14 @@
         }
 
         function showSection(sectionId) {
-            document.getElementById('homeContent').style.display = 'none';
-            document.getElementById('musicModal').style.display = 'none';
-            document.getElementById('videoModal').style.display = 'none';
+            // Sembunyikan semua konten halaman
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(el => el.style.display = 'none');
             
+            // Tampilkan bagian yang dipilih
             document.getElementById(sectionId).style.display = 'flex';
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        function showHome() {
-            document.getElementById('musicModal').style.display = 'none';
-            document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('homeContent').style.display = 'flex';
+            
+            // Gulir kembali ke paling atas halaman secara mulus
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
