@@ -70,6 +70,7 @@
             text-align: center;
             padding: 20px;
             max-width: 100%;
+            z-index: 5;
         }
 
         /* Gaya Logo */
@@ -134,7 +135,7 @@
             align-items: center;
             width: 100%;
             max-width: 650px;
-            height: 88vh;
+            height: 80vh; /* Disesuaikan agar tidak menabrak footer */
             padding: 20px;
         }
 
@@ -235,10 +236,12 @@
             color: #ffffff;
         }
 
-        /* Footer Bawah */
+        /* Footer Bawah Dikunci (Z-index lebih tinggi dari modal agar selalu di atas) */
         .footer {
-            position: relative;
-            z-index: 2;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 3000; /* Berada di atas modal */
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -246,8 +249,9 @@
             padding: 15px 40px;
             font-size: 11px;
             color: #aaaaaa;
-            background: transparent;
-            border: none;
+            background: rgba(11, 11, 11, 0.8);
+            backdrop-filter: blur(5px);
+            pointer-events: auto;
         }
 
         .social-icons {
@@ -266,13 +270,13 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie di Kiri Bawah */
+        /* Tombol Cookie di Kiri Bawah (Diatur agar tidak menutupi teks) */
         .cookie-icon-btn {
             position: fixed;
-            bottom: 15px;
+            bottom: 60px;
             left: 20px;
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
@@ -281,7 +285,7 @@
             align-items: center;
             color: #ffffff;
             cursor: pointer;
-            z-index: 999;
+            z-index: 3001;
             transition: background 0.3s, transform 0.3s;
         }
 
@@ -290,7 +294,7 @@
             transform: scale(1.1);
         }
 
-        /* PENGATURAN KHUSUS HP (Batas diperlebar ke 1024px agar mencakup semua jenis HP & Mode Tablet) */
+        /* PENGATURAN KHUSUS HP */
         @media screen and (max-width: 1024px) {
             nav.desktop-nav {
                 display: none !important;
@@ -360,15 +364,16 @@
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
-                gap: 10px;
-                padding: 15px 20px;
+                gap: 8px;
+                padding: 10px 15px;
+                font-size: 9px;
             }
 
             .cookie-icon-btn {
-                bottom: 10px;
+                bottom: 55px;
                 left: 15px;
-                width: 32px;
-                height: 32px;
+                width: 28px;
+                height: 28px;
             }
         }
     </style>
@@ -454,7 +459,7 @@
         </div>
     </div>
 
-    <!-- Footer Bawah -->
+    <!-- Footer Bawah Terkunci Permanen -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
