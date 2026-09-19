@@ -205,27 +205,12 @@
             color: #1c1410;
         }
 
-        .close-modal-btn {
-            margin: 15px 0 25px 0;
-            background: none;
-            border: none;
-            color: #b0a8a0;
-            font-size: 11px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .close-modal-btn:hover {
-            color: #ffffff;
-        }
-
-        /* Footer Bawah Utama (Tampilan Home) */
-        .footer {
+        /* Footer Bawah Utama & Modal (Disamakan persis seperti tampilan Home) */
+        .footer, .modal-footer {
             position: relative;
             z-index: 2;
             width: 100%;
+            max-width: 900px; /* Lebar maksimal agar sama panjang dengan tata letak home */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -235,30 +220,15 @@
             color: #b0a8a0;
             background: transparent;
             border: none;
+            margin-top: 30px;
         }
 
-        .footer span {
-            max-width: 75%;
-            line-height: 1.4;
-            text-align: left;
-        }
-
-        /* Footer khusus di dalam Modal agar ikut terscroll */
         .modal-footer {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10px 10px 10px;
-            font-size: 9px;
-            letter-spacing: 1px;
-            color: #b0a8a0;
-            border-top: 1px solid rgba(212, 178, 147, 0.15);
-            margin-top: 10px;
+            border-top: 1px solid rgba(212, 178, 147, 0.15); /* Garis tipis pemisah di dalam modal */
         }
 
-        .modal-footer span {
-            max-width: 70%;
+        .footer span, .modal-footer span {
+            max-width: 75%;
             line-height: 1.4;
             text-align: left;
         }
@@ -375,6 +345,7 @@
                 text-align: center;
                 gap: 12px;
                 padding: 15px 20px;
+                max-width: 100%;
             }
 
             .footer span, .modal-footer span {
@@ -417,8 +388,8 @@
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- Modal Musik (Ikut Scroll ke Bawah Beserta Footer) -->
-    <div id="musicModal" class="modal">
+    <!-- Modal Musik (Ikut Scroll & Footer Sama Panjang) -->
+    <div id="musicModal" class="modal" onclick="if(event.target === this) closeModal('musicModal')">
         <div class="modal-content">
             <h2>MUSIC</h2>
             <div class="vertical-scroll-container">
@@ -440,8 +411,6 @@
                 </div>
             </div>
 
-            <button class="close-modal-btn" onclick="closeModal('musicModal')">Tutup</button>
-
             <div class="modal-footer">
                 <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
                 <div class="social-icons">
@@ -454,8 +423,8 @@
         </div>
     </div>
 
-    <!-- Modal Video (Ikut Scroll ke Bawah Beserta Footer) -->
-    <div id="videoModal" class="modal">
+    <!-- Modal Video (Ikut Scroll & Footer Sama Panjang) -->
+    <div id="videoModal" class="modal" onclick="if(event.target === this) closeModal('videoModal')">
         <div class="modal-content">
             <h2>VIDEOS</h2>
             <div class="vertical-scroll-container">
@@ -476,8 +445,6 @@
                     <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
                 </div>
             </div>
-
-            <button class="close-modal-btn" onclick="closeModal('videoModal')">Tutup</button>
 
             <div class="modal-footer">
                 <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
@@ -515,7 +482,7 @@
         }
 
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+            document.getElementById(modalId).style.display = 'flex';
         }
         
         function closeModal(modalId) {
