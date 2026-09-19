@@ -62,7 +62,7 @@
             display: none;
         }
 
-        /* Konten Utama - Tepat di Tengah Layar Laptop */
+        /* Konten Utama (Default Laptop) */
         .content {
             display: flex;
             flex-direction: column;
@@ -180,7 +180,7 @@
             width: 280px;
             height: 280px;
             object-fit: cover;
-            border-radius: 4px;
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
             margin-bottom: 12px;
@@ -309,9 +309,10 @@
                 z-index: 1001;
             }
 
-            /* Penyesuaian khusus konten HP agar titik tengahnya memperhitungkan tombol MENU atas */
+            /* Memaksa konten utama berada tepat di tengah layar HP secara presisi */
             .content {
-                padding-top: 20px; 
+                margin: auto;
+                padding-top: 0;
             }
 
             .mobile-fullscreen-menu {
