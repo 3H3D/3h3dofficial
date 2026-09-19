@@ -199,34 +199,31 @@
             color: #1c1410;
         }
 
-        /* Footer Permanen di Bawah Layar */
+        /* Footer Melebar Penuh ke Kiri dan Kanan seperti Referensi */
         .footer {
             width: 100%;
-            max-width: 1200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            font-size: 9.5px;
-            letter-spacing: 1px;
+            padding: 20px 35px;
+            font-size: 9px;
+            letter-spacing: 0.8px;
             color: #b0a8a0;
             background: transparent;
         }
 
         .footer span {
-            max-width: 75%;
-            line-height: 1.4;
             text-align: left;
         }
 
         .social-icons {
             display: flex;
-            gap: 20px;
+            gap: 22px;
         }
 
         .social-icons a {
             color: #ffffff;
-            font-size: 15px;
+            font-size: 14px;
             text-decoration: none;
             transition: opacity 0.3s;
         }
@@ -235,13 +232,13 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie di Kiri Bawah */
+        /* Tombol Cookie di Kiri Bawah (Dekat Footer) */
         .cookie-icon-btn {
             position: fixed;
             bottom: 15px;
             left: 20px;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             background-color: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
@@ -329,16 +326,15 @@
             }
 
             .footer span {
-                max-width: 100%;
-                font-size: 8px;
+                font-size: 7.5px;
                 text-align: center;
             }
 
             .cookie-icon-btn {
                 bottom: 15px;
                 left: 15px;
-                width: 32px;
-                height: 32px;
+                width: 30px;
+                height: 30px;
             }
         }
     </style>
@@ -414,12 +410,12 @@
         </div>
     </div>
 
-    <!-- Footer Tetap di Bawah (Selalu Muncul di Semua Menu) -->
+    <!-- Footer Melebar Penuh -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
             <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
             <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
@@ -427,10 +423,10 @@
 
     <!-- Tombol Cookie di Kiri Bawah -->
     <div class="cookie-icon-btn" onclick="alert('Pengaturan Cookie & Privasi aktif untuk 3H3D.')" title="Privacy & Cookie Preferences">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
     </div>
 
-    <!-- JavaScript untuk Mengatur Perilaku Tab & Scroll -->
+    <!-- JavaScript -->
     <script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -438,7 +434,6 @@
         }
 
         function switchTab(tabName) {
-            // Sembunyikan semua bagian
             document.getElementById('homeSection').style.display = 'none';
             document.getElementById('musicSection').classList.remove('active');
             document.getElementById('videoSection').classList.remove('active');
@@ -446,17 +441,14 @@
             const bodyEl = document.body;
 
             if (tabName === 'home') {
-                // Home terkunci di satu layar penuh
                 bodyEl.classList.remove('scroll-active');
                 document.getElementById('homeSection').style.display = 'flex';
                 window.scrollTo(0, 0);
             } else if (tabName === 'music') {
-                // Music bisa di-scroll ke bawah
                 bodyEl.classList.add('scroll-active');
                 document.getElementById('musicSection').classList.add('active');
                 window.scrollTo(0, 0);
             } else if (tabName === 'video') {
-                // Video bisa di-scroll ke bawah
                 bodyEl.classList.add('scroll-active');
                 document.getElementById('videoSection').classList.add('active');
                 window.scrollTo(0, 0);
