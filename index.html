@@ -26,10 +26,12 @@
             overflow-x: hidden;
         }
 
-        /* Kelas untuk mengunci scroll saat Home aktif */
+        /* Mengunci total scroll saat Home aktif */
         body.no-scroll {
             height: 100vh;
             overflow: hidden;
+            position: fixed;
+            width: 100%;
         }
 
         body {
@@ -335,7 +337,7 @@
         }
     </style>
 </head>
-<body class="no-scroll"> <!-- Default awal Home terkunci scroll-nya -->
+<body class="no-scroll">
 
     <!-- Tombol MENU khusus HP -->
     <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
@@ -433,13 +435,19 @@
             mobileMenu.classList.toggle('active');
         }
 
+        // Mencegah gerakan sentuh (touchmove) di HP saat Home terkunci
+        document.addEventListener('touchmove', function(e) {
+            if (document.body.classList.contains('no-scroll')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
         function showSection(sectionId) {
             const views = document.querySelectorAll('.page-view');
             views.forEach(el => el.style.display = 'none');
             
             document.getElementById(sectionId).style.display = 'flex';
 
-            // Jika membuka Home, kunci scroll. Jika membuka Video/Music, izinkan scroll.
             if (sectionId === 'homeContent') {
                 document.body.classList.add('no-scroll');
             } else {
