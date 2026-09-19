@@ -232,29 +232,29 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie Gaya Icons8 Baru (Kotak Sudut Membulat, Background Hitam, Ikon Putih) */
+        /* Tombol Cookie Bulat Hijau dengan Ikon Cookie Putih di Dalamnya */
         .cookie-icon-btn {
             position: fixed;
             bottom: 15px;
             left: 20px;
-            width: 42px;
-            height: 42px;
-            background-color: #0d0d0d; /* Background hitam gelap seperti referensi */
-            border: 1px solid rgba(255, 255, 255, 0.15); /* Border tipis halus */
-            border-radius: 10px; /* Sudut melengkung khas kotak icons8 */
+            width: 44px;
+            height: 44px;
+            background-color: #12803b; /* Lingkaran luar warna hijau */
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%; /* Membuat tombol berbentuk bulat */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #ffffff; /* Ikon warna putih */
+            color: #ffffff; /* Ikon di dalam warna putih */
             cursor: pointer;
             z-index: 999;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
         .cookie-icon-btn:hover {
-            transform: scale(1.08);
-            border-color: rgba(212, 178, 147, 0.6);
+            transform: scale(1.1);
+            background-color: #0e662f;
         }
 
         /* --- STYLING MODAL / POPUP COOKIE (GAYA ONETRUST) --- */
@@ -614,8 +614,8 @@
             .cookie-icon-btn {
                 bottom: 15px;
                 left: 15px;
-                width: 38px;
-                height: 38px;
+                width: 40px;
+                height: 40px;
             }
 
             .ot-footer {
@@ -716,9 +716,9 @@
         </div>
     </div>
 
-    <!-- Tombol Cookie Baru (Gaya Outline Putih dengan Background Kotak Gelap) -->
+    <!-- Tombol Cookie Bulat Hijau dengan Ikon Putih Di Dalamnya -->
     <div class="cookie-icon-btn" onclick="toggleCookieModal()" title="Privacy Preference Center">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2a10 10 0 0 0-7.25 16.95c.34.34.45.84.3 1.31l-.47 1.43a1 1 0 0 0 1.26 1.26l1.43-.47c.47-.15.97-.04 1.31.3A10 10 0 1 0 12 2zm0 18a8 8 0 1 1 5.66-13.66 1 1 0 0 0-.29-.7 8 8 0 0 0-9.84 0 1 1 0 0 0-.29.7A8 8 0 0 1 12 20zm-3-11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 2a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-4 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-2a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-2-6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
         </svg>
     </div>
