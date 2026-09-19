@@ -132,19 +132,10 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 650px;
+            max-width: 750px;
             height: 90vh;
-            padding: 20px 20px 10px 20px;
+            padding: 25px 20px 15px 20px;
             position: relative;
-        }
-
-        .modal-content h2 {
-            font-size: 18px;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            color: #d4b293;
-            text-transform: uppercase;
-            flex-shrink: 0;
         }
 
         /* Area Daftar Item Vertikal (Bisa Di-scroll ke Bawah) */
@@ -157,7 +148,7 @@
             gap: 40px;
             padding-right: 5px;
             padding-bottom: 20px;
-            flex-grow: 1; /* Mengisi ruang agar footer terdorong rapi ke bawah */
+            flex-grow: 1;
         }
 
         /* Scrollbar Halus */
@@ -218,7 +209,7 @@
             color: #1c1410;
         }
 
-        /* Footer khusus di dalam Modal (Diposisikan persis di bagian paling bawah) */
+        /* Footer khusus di dalam Modal */
         .modal-footer {
             width: 100%;
             padding-top: 15px;
@@ -226,14 +217,15 @@
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             align-items: center;
             font-size: 8.5px;
             letter-spacing: 1px;
             color: #b0a8a0;
+            text-align: center;
         }
 
-        .modal-footer a {
+        .modal-footer .bio-link-text {
             color: #d4b293;
             text-decoration: none;
             font-weight: bold;
@@ -241,8 +233,13 @@
             transition: opacity 0.3s;
         }
 
-        .modal-footer a:hover {
+        .modal-footer .bio-link-text:hover {
             opacity: 0.7;
+        }
+
+        .modal-footer span {
+            line-height: 1.4;
+            max-width: 90%;
         }
 
         /* Footer Bawah Utama */
@@ -419,10 +416,9 @@
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">LISTEN NOW</a>
     </div>
 
-    <!-- Modal Musik (Footer di bagian paling bawah modal) -->
+    <!-- Modal Musik -->
     <div id="musicModal" class="modal" onclick="closeModalOutside(event, 'musicModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <h2>MUSIC</h2>
             
             <div class="vertical-scroll-container">
                 <div class="item-card">
@@ -443,17 +439,17 @@
                 </div>
             </div>
 
+            <!-- Footer Modal Musik -->
             <div class="modal-footer">
-                <a href="https://ffm.to/kwiregtori" target="_blank">BIO LINK: FFM.TO/KWIREGTORI</a>
-                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED.</span>
+                <a href="https://ffm.to/kwiregtori" target="_blank" class="bio-link-text">FFM.TO/KWIREGTORI</a>
+                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
             </div>
         </div>
     </div>
 
-    <!-- Modal Video (Footer di bagian paling bawah modal) -->
+    <!-- Modal Video -->
     <div id="videoModal" class="modal" onclick="closeModalOutside(event, 'videoModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <h2>VIDEOS</h2>
             
             <div class="vertical-scroll-container">
                 <div class="item-card">
@@ -474,16 +470,17 @@
                 </div>
             </div>
 
+            <!-- Footer Modal Video -->
             <div class="modal-footer">
-                <a href="https://ffm.to/kwiregtori" target="_blank">BIO LINK: FFM.TO/KWIREGTORI</a>
-                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED.</span>
+                <a href="https://ffm.to/kwiregtori" target="_blank" class="bio-link-text">FFM.TO/KWIREGTORI</a>
+                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
             </div>
         </div>
     </div>
 
-    <!-- Footer Bawah -->
+    <!-- Footer Bawah Halaman Utama -->
     <div class="footer">
-        <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY | HOW WE USE YOUR DATA | YOUR CALIFORNIA PRIVACY RIGHTS | DO NOT SELL MY PERSONAL INFORMATION | SEND US FEEDBACK</span>
+        <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
             <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -512,7 +509,6 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Fungsi agar modal tertutup saat area latar belakang gelap di luar konten diklik
         function closeModalOutside(event, modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
