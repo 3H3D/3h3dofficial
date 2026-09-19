@@ -16,25 +16,36 @@
             box-sizing: border-box;
         }
 
-        /* Mengunci halaman utama agar pas di 1 layar penuh */
+        /* Mengatur dasar halaman */
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            position: fixed;
             background: #1c1410;
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
 
+        /* Default Home: Terkunci di 1 layar penuh */
         body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
 
-        /* Navbar Default (Hanya tampil di Layar Lebar/Laptop) */
+        /* Jika halaman sedang dalam mode scroll (Music / Video terbuka) */
+        body.scroll-active {
+            overflow-y: auto !important;
+            position: relative !important;
+            height: auto !important;
+            min-height: 100vh;
+        }
+
+        /* Navbar Default (Laptop) */
         nav.desktop-nav {
             display: flex;
             gap: 45px;
@@ -56,13 +67,13 @@
             opacity: 0.7;
         }
 
-        /* Tombol MENU & Menu Fullscreen HP (Default disembunyikan) */
+        /* Tombol MENU & Menu Fullscreen HP */
         .menu-toggle,
         .mobile-fullscreen-menu {
             display: none;
         }
 
-        /* Konten Utama */
+        /* Konten Utama HOME */
         .content {
             display: flex;
             flex-direction: column;
@@ -109,50 +120,35 @@
             color: #1c1410;
         }
 
-        /* Modal / Kotak Popup Vertikal ke Bawah */
-        .modal {
+        /* Bagian Konten Menu (Music & Video) yang bisa di-scroll */
+        .page-section {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(28, 20, 16, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            overflow-y: auto; /* Membuat modal bisa di-scroll secara keseluruhan */
-            padding: 40px 20px;
-            align-items: flex-start;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: transparent;
-            text-align: center;
-            display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        .modal-content h2 {
+        .page-section.active {
+            display: flex;
+        }
+
+        .page-section h2 {
             font-size: 16px;
             letter-spacing: 5px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             color: #d4b293;
             text-transform: uppercase;
         }
 
-        /* Area Daftar Item Vertikal */
         .vertical-scroll-container {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 45px;
-            padding-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .item-card {
@@ -162,7 +158,7 @@
             width: 100%;
         }
 
-        /* Gaya Khusus Musik (Artwork Kotak) */
+        /* Artwork Musik & Video */
         .music-art {
             width: 280px;
             height: 280px;
@@ -173,7 +169,6 @@
             margin-bottom: 15px;
         }
 
-        /* Gaya Khusus Video (Artwork Landscape) */
         .video-art {
             width: 100%;
             max-width: 520px;
@@ -185,7 +180,6 @@
             margin-bottom: 15px;
         }
 
-        /* Tombol Aksi di Bawah Artwork */
         .btn-action {
             display: inline-block;
             padding: 10px 30px;
@@ -205,12 +199,10 @@
             color: #1c1410;
         }
 
-        /* Footer Bawah Utama & Modal (Disamakan persis seperti tampilan Home) */
-        .footer, .modal-footer {
-            position: relative;
-            z-index: 2;
+        /* Footer Permanen di Bawah Layar */
+        .footer {
             width: 100%;
-            max-width: 900px; /* Lebar maksimal agar sama panjang dengan tata letak home */
+            max-width: 1200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -219,15 +211,9 @@
             letter-spacing: 1px;
             color: #b0a8a0;
             background: transparent;
-            border: none;
-            margin-top: 30px;
         }
 
-        .modal-footer {
-            border-top: 1px solid rgba(212, 178, 147, 0.15); /* Garis tipis pemisah di dalam modal */
-        }
-
-        .footer span, .modal-footer span {
+        .footer span {
             max-width: 75%;
             line-height: 1.4;
             text-align: left;
@@ -273,7 +259,7 @@
             transform: scale(1.1);
         }
 
-        /* PENGATURAN KHUSUS HP (Max-width 1024px) */
+        /* RESPONSIF HP */
         @media screen and (max-width: 1024px) {
             nav.desktop-nav {
                 display: none !important;
@@ -322,11 +308,6 @@
                 display: block !important;
                 width: 100%;
                 text-align: center;
-                transition: opacity 0.3s;
-            }
-
-            .mobile-fullscreen-menu a:hover {
-                opacity: 0.6;
             }
 
             .music-art {
@@ -339,16 +320,15 @@
                 height: 48vw;
             }
 
-            .footer, .modal-footer {
+            .footer {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
                 gap: 12px;
                 padding: 15px 20px;
-                max-width: 100%;
             }
 
-            .footer span, .modal-footer span {
+            .footer span {
                 max-width: 100%;
                 font-size: 8px;
                 text-align: center;
@@ -368,97 +348,73 @@
     <!-- Tombol MENU khusus HP -->
     <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
 
-    <!-- Navigasi Biasa untuk Laptop / Komputer -->
+    <!-- Navigasi Utama -->
     <nav class="desktop-nav">
-        <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
-        <a onclick="openModal('videoModal')">VIDEO</a>
-        <a onclick="openModal('musicModal')">MUSIC</a>
+        <a onclick="switchTab('home')">HOME</a>
+        <a onclick="switchTab('video')">VIDEO</a>
+        <a onclick="switchTab('music')">MUSIC</a>
     </nav>
 
-    <!-- Menu Layar Penuh (Fullscreen) Khusus HP -->
+    <!-- Menu Layar Penuh HP -->
     <div id="mobileMenu" class="mobile-fullscreen-menu">
-        <a href="#" onclick="toggleMobileMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
-        <a onclick="toggleMobileMenu(); openModal('musicModal');">MUSIC</a>
-        <a onclick="toggleMobileMenu(); openModal('videoModal');">VIDEO</a>
+        <a onclick="toggleMobileMenu(); switchTab('home');">HOME</a>
+        <a onclick="toggleMobileMenu(); switchTab('music');">MUSIC</a>
+        <a onclick="toggleMobileMenu(); switchTab('video');">VIDEO</a>
     </div>
 
-    <!-- Konten Utama (Terkunci di Home) -->
-    <div class="content">
+    <!-- TAMPILAN HOME (Terkunci di satu layar penuh) -->
+    <div id="homeSection" class="content page-section active" style="display: flex;">
         <div class="logo-text">3H3D</div>
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- Modal Musik (Ikut Scroll & Footer Sama Panjang) -->
-    <div id="musicModal" class="modal" onclick="if(event.target === this) closeModal('musicModal')">
-        <div class="modal-content">
-            <h2>MUSIC</h2>
-            <div class="vertical-scroll-container">
-                <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
-                    <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
-                </div>
-                <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
-                    <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
-                </div>
-                <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
-                    <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
-                </div>
-                <div class="item-card">
-                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Music 4" class="music-art">
-                    <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
-                </div>
+    <!-- TAMPILAN MUSIC (Bisa di-scroll ke bawah) -->
+    <div id="musicSection" class="page-section">
+        <h2>MUSIC</h2>
+        <div class="vertical-scroll-container">
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
+                <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
             </div>
-
-            <div class="modal-footer">
-                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
+                <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
+            </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
+                <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
+            </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Music 4" class="music-art">
+                <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
             </div>
         </div>
     </div>
 
-    <!-- Modal Video (Ikut Scroll & Footer Sama Panjang) -->
-    <div id="videoModal" class="modal" onclick="if(event.target === this) closeModal('videoModal')">
-        <div class="modal-content">
-            <h2>VIDEOS</h2>
-            <div class="vertical-scroll-container">
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
-                </div>
-                <div class="item-card">
-                    <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4" class="video-art">
-                    <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
-                </div>
+    <!-- TAMPILAN VIDEO (Bisa di-scroll ke bawah) -->
+    <div id="videoSection" class="page-section">
+        <h2>VIDEOS</h2>
+        <div class="vertical-scroll-container">
+            <div class="item-card">
+                <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
+                <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
             </div>
-
-            <div class="modal-footer">
-                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
+            <div class="item-card">
+                <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
+                <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
+            </div>
+            <div class="item-card">
+                <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
+                <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
+            </div>
+            <div class="item-card">
+                <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4" class="video-art">
+                <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer Bawah Utama (Tampil di Layar Home yang Terkunci) -->
+    <!-- Footer Tetap di Bawah (Selalu Muncul di Semua Menu) -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
@@ -469,24 +425,42 @@
         </div>
     </div>
 
-    <!-- Ikon Cookie di Kiri Bawah -->
+    <!-- Tombol Cookie di Kiri Bawah -->
     <div class="cookie-icon-btn" onclick="alert('Pengaturan Cookie & Privasi aktif untuk 3H3D.')" title="Privacy & Cookie Preferences">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.5 11.5c-.3-.1-.6 0-.8.2-.5.5-1.2.8-2 .8-1.7 0-3-1.3-3-3 0-.8.3-1.5.8-2 .2-.2.3-.5.2-.8-.1-.3-.4-.5-.7-.4C13.8 7.1 12 9.3 12 12c0 2.8 2.2 5 5 5 2.7 0 4.9-1.8 5.3-4.3 0-.3-.2-.6-.5-.7zM17 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-4-7.5c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5v-1zm-6 3c0-.3-.2-.5-.5-.5h-2c-.3 0-.5.2-.5.5v2c0 .3.2.5.5.5h2c0 .3.2.5.5.5v-2zm2 7c0-.3-.2-.5-.5-.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1c0 .3.2.5.5.5v-1z"/></svg>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript untuk Mengatur Perilaku Tab & Scroll -->
     <script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
         }
 
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-        }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+        function switchTab(tabName) {
+            // Sembunyikan semua bagian
+            document.getElementById('homeSection').style.display = 'none';
+            document.getElementById('musicSection').classList.remove('active');
+            document.getElementById('videoSection').classList.remove('active');
+            
+            const bodyEl = document.body;
+
+            if (tabName === 'home') {
+                // Home terkunci di satu layar penuh
+                bodyEl.classList.remove('scroll-active');
+                document.getElementById('homeSection').style.display = 'flex';
+                window.scrollTo(0, 0);
+            } else if (tabName === 'music') {
+                // Music bisa di-scroll ke bawah
+                bodyEl.classList.add('scroll-active');
+                document.getElementById('musicSection').classList.add('active');
+                window.scrollTo(0, 0);
+            } else if (tabName === 'video') {
+                // Video bisa di-scroll ke bawah
+                bodyEl.classList.add('scroll-active');
+                document.getElementById('videoSection').classList.add('active');
+                window.scrollTo(0, 0);
+            }
         }
     </script>
 
