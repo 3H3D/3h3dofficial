@@ -16,7 +16,7 @@
             box-sizing: border-box;
         }
 
-        /* Halaman bisa di-scroll secara normal */
+        /* Halaman bisa di-scroll secara normal dengan latar gradasi menyeluruh */
         html, body {
             width: 100%;
             min-height: 100%;
@@ -112,9 +112,9 @@
             color: #0b0b0b;
         }
 
-        /* Bagian Section (Video / Music) yang menyatu dalam satu halaman scroll */
+        /* Bagian Section (Video / Music) */
         .page-section {
-            display: none; /* Muncul saat diklik melalui navigasi */
+            display: none; 
             width: 100%;
             background: transparent;
             padding: 50px 20px 80px 20px;
@@ -196,16 +196,16 @@
             color: #0b0b0b;
         }
 
-        /* Footer Bawah */
+        /* Footer Disatukan (Background Dihilangkan, Menyatu dengan Halaman) */
         .footer {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 25px 40px;
             font-size: 11px;
             color: #aaaaaa;
-            background: rgba(11, 11, 11, 0.95);
+            background: transparent; /* Latar belakang hitam pekat dihapus */
             margin-top: auto;
         }
 
@@ -315,8 +315,8 @@
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
-                gap: 8px;
-                padding: 15px;
+                gap: 12px;
+                padding: 20px 15px;
                 font-size: 9px;
             }
 
@@ -404,7 +404,7 @@
         </div>
     </div>
 
-    <!-- Footer Bawah Menjadi Satu Kesatuan -->
+    <!-- Footer Menyatu dengan Latar Halaman (Background Hitam Dihilangkan) -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
@@ -428,14 +428,10 @@
         }
 
         function showSection(sectionId) {
-            // Sembunyikan semua konten halaman
             const views = document.querySelectorAll('.page-view');
             views.forEach(el => el.style.display = 'none');
             
-            // Tampilkan bagian yang dipilih
             document.getElementById(sectionId).style.display = 'flex';
-            
-            // Gulir kembali ke paling atas halaman secara mulus
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
