@@ -120,9 +120,10 @@
             background: rgba(28, 20, 16, 0.95);
             backdrop-filter: blur(12px);
             z-index: 2000;
-            overflow-y: auto; /* Membuat modal bisa di-scroll secara keseluruhan termasuk footer */
+            overflow-y: auto; /* Membuat modal bisa di-scroll secara keseluruhan */
+            padding: 40px 20px;
+            align-items: flex-start;
             justify-content: center;
-            align-items: center;
         }
 
         .modal-content {
@@ -133,9 +134,7 @@
             align-items: center;
             width: 100%;
             max-width: 650px;
-            min-height: 100vh; /* Mengisi tinggi layar penuh agar struktur bawahnya rapi */
-            padding: 40px 20px 20px 20px;
-            justify-content: space-between; /* Mendorong footer di dalam modal ke paling bawah */
+            margin: 0 auto;
         }
 
         .modal-content h2 {
@@ -144,7 +143,6 @@
             margin-bottom: 25px;
             color: #d4b293;
             text-transform: uppercase;
-            flex-shrink: 0;
         }
 
         /* Area Daftar Item Vertikal */
@@ -208,7 +206,7 @@
         }
 
         .close-modal-btn {
-            margin: 25px 0 15px 0;
+            margin: 15px 0 25px 0;
             background: none;
             border: none;
             color: #b0a8a0;
@@ -217,14 +215,13 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: color 0.3s;
-            flex-shrink: 0;
         }
 
         .close-modal-btn:hover {
             color: #ffffff;
         }
 
-        /* Footer Bawah Utama (Tampilan Home)[cite: 8] */
+        /* Footer Bawah Utama (Tampilan Home) */
         .footer {
             position: relative;
             z-index: 2;
@@ -257,7 +254,7 @@
             letter-spacing: 1px;
             color: #b0a8a0;
             border-top: 1px solid rgba(212, 178, 147, 0.15);
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .modal-footer span {
@@ -400,7 +397,7 @@
     <!-- Tombol MENU khusus HP -->
     <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
 
-    <!-- Navigasi Biasa untuk Laptop / Komputer[cite: 8] -->
+    <!-- Navigasi Biasa untuk Laptop / Komputer -->
     <nav class="desktop-nav">
         <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
         <a onclick="openModal('videoModal')">VIDEO</a>
@@ -414,7 +411,7 @@
         <a onclick="toggleMobileMenu(); openModal('videoModal');">VIDEO</a>
     </div>
 
-    <!-- Konten Utama (Terkunci di Home)[cite: 8] -->
+    <!-- Konten Utama (Terkunci di Home) -->
     <div class="content">
         <div class="logo-text">3H3D</div>
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
@@ -423,38 +420,35 @@
     <!-- Modal Musik (Ikut Scroll ke Bawah Beserta Footer) -->
     <div id="musicModal" class="modal">
         <div class="modal-content">
-            <div>
-                <h2>MUSIC</h2>
-                <div class="vertical-scroll-container">
-                    <div class="item-card">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
-                        <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
-                    </div>
-                    <div class="item-card">
-                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
-                        <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
-                    </div>
-                    <div class="item-card">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
-                        <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
-                    </div>
-                    <div class="item-card">
-                        <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Music 4" class="music-art">
-                        <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
-                    </div>
+            <h2>MUSIC</h2>
+            <div class="vertical-scroll-container">
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
+                    <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
+                    <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
+                    <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Music 4" class="music-art">
+                    <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
                 </div>
             </div>
 
-            <div style="width: 100%;">
-                <button class="close-modal-btn" onclick="closeModal('musicModal')">Tutup</button>
-                <div class="modal-footer">
-                    <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                        <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
+            <button class="close-modal-btn" onclick="closeModal('musicModal')">Tutup</button>
+
+            <div class="modal-footer">
+                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
@@ -463,44 +457,41 @@
     <!-- Modal Video (Ikut Scroll ke Bawah Beserta Footer) -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
-            <div>
-                <h2>VIDEOS</h2>
-                <div class="vertical-scroll-container">
-                    <div class="item-card">
-                        <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
-                        <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
-                    </div>
-                    <div class="item-card">
-                        <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
-                        <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
-                    </div>
-                    <div class="item-card">
-                        <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
-                        <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
-                    </div>
-                    <div class="item-card">
-                        <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4" class="video-art">
-                        <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
-                    </div>
+            <h2>VIDEOS</h2>
+            <div class="vertical-scroll-container">
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
                 </div>
             </div>
 
-            <div style="width: 100%;">
-                <button class="close-modal-btn" onclick="closeModal('videoModal')">Tutup</button>
-                <div class="modal-footer">
-                    <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                        <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
+            <button class="close-modal-btn" onclick="closeModal('videoModal')">Tutup</button>
+
+            <div class="modal-footer">
+                <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer Bawah Utama (Tampil di Layar Home yang Terkunci)[cite: 8] -->
+    <!-- Footer Bawah Utama (Tampil di Layar Home yang Terkunci) -->
     <div class="footer">
         <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
