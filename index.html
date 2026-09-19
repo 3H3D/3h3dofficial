@@ -16,14 +16,15 @@
             box-sizing: border-box;
         }
 
-        /* Mengaktifkan scroll pada halaman utama */
+        /* Mengunci halaman utama agar pas di 1 layar penuh */
         html, body {
             width: 100%;
-            min-height: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
             background: #1c1410;
             color: #ffffff;
             font-family: Arial, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -33,22 +34,15 @@
             align-items: center;
         }
 
-        /* Navbar Default (Tetap di atas / Sticky) */
+        /* Navbar Default (Hanya tampil di Layar Lebar/Laptop) */
         nav.desktop-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
             display: flex;
-            justify-content: center;
             gap: 45px;
-            padding: 25px 0;
+            padding-top: 35px;
             font-size: 16px;
             letter-spacing: 3px;
             font-weight: bold;
-            background: rgba(28, 20, 16, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            z-index: 10;
         }
 
         nav.desktop-nav a {
@@ -68,30 +62,35 @@
             display: none;
         }
 
-        /* Setiap Section Halaman (Home, Video, Music) */
-        .section-page {
-            width: 100%;
-            min-height: 100vh;
+        /* Konten Utama */
+        .content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
-            padding: 120px 20px 80px 20px;
+            padding: 20px;
+            max-width: 100%;
         }
 
-        /* Gaya Logo di Home */
+        /* Gaya Logo */
         .logo-text {
             font-family: 'Rubik Mono One', sans-serif;
-            font-size: clamp(2.8rem, 10vw, 65px);
+            font-size: clamp(3rem, 12vw, 70px);
             letter-spacing: 4px;
             margin-bottom: 25px;
             color: #d4b293;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+            animation: fadeInLogo 1.5s ease-in;
+            word-break: break-word;
         }
 
-        /* Tombol Listen / Action */
-        .btn-listen, .btn-action {
+        @keyframes fadeInLogo {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tombol Listen Now */
+        .btn-listen {
             display: inline-block;
             padding: 12px 30px;
             border: 1px solid rgba(212, 178, 147, 0.8);
@@ -99,25 +98,72 @@
             color: #d4b293;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: 3px;
             font-weight: bold;
             transition: all 0.3s ease;
         }
 
-        .btn-listen:hover, .btn-action:hover {
+        .btn-listen:hover {
             background-color: #d4b293;
             color: #1c1410;
         }
 
-        /* Container untuk Item Musik & Video */
-        .items-container {
+        /* Modal / Kotak Popup Vertikal ke Bawah */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(28, 20, 16, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: transparent;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 50px;
             width: 100%;
-            max-width: 750px;
+            max-width: 650px;
+            height: 88vh;
+            padding: 20px;
+        }
+
+        .modal-content h2 {
+            font-size: 16px;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            color: #d4b293;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        /* Area Daftar Item Vertikal (Bisa Di-scroll ke Bawah) */
+        .vertical-scroll-container {
+            width: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 45px;
+            padding-right: 5px;
+            padding-bottom: 30px;
+        }
+
+        /* Scrollbar Halus */
+        .vertical-scroll-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .vertical-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(212, 178, 147, 0.3);
+            border-radius: 3px;
         }
 
         .item-card {
@@ -127,7 +173,7 @@
             width: 100%;
         }
 
-        /* Artwork Musik (Kotak) */
+        /* Gaya Khusus Musik (Artwork Kotak) */
         .music-art {
             width: 280px;
             height: 280px;
@@ -138,7 +184,7 @@
             margin-bottom: 15px;
         }
 
-        /* Artwork Video (Landscape) */
+        /* Gaya Khusus Video (Artwork Landscape) */
         .video-art {
             width: 100%;
             max-width: 520px;
@@ -150,43 +196,60 @@
             margin-bottom: 15px;
         }
 
-        /* Footer Bawah Utama (Meniru persis gaya Chris Brown World) */
-        .footer {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            padding: 30px 40px;
-            background: #1c1410;
-            border-top: 1px solid rgba(212, 178, 147, 0.15);
-            z-index: 10;
-        }
-
-        .footer-bio-link {
+        /* Tombol Aksi di Bawah Artwork */
+        .btn-action {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid rgba(212, 178, 147, 0.8);
+            background-color: transparent;
             color: #d4b293;
             text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
             font-weight: bold;
-            font-size: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #d4b293;
+            color: #1c1410;
+        }
+
+        .close-modal-btn {
+            margin-top: 15px;
+            background: none;
+            border: none;
+            color: #b0a8a0;
+            font-size: 11px;
             letter-spacing: 2px;
-            transition: opacity 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            flex-shrink: 0;
         }
 
-        .footer-bio-link:hover {
-            opacity: 0.7;
+        .close-modal-btn:hover {
+            color: #ffffff;
         }
 
-        .footer-main {
+        /* Footer Bawah */
+        .footer {
+            position: relative;
+            z-index: 2;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 40px;
             font-size: 9.5px;
             letter-spacing: 1px;
             color: #b0a8a0;
+            background: transparent;
+            border: none;
         }
 
-        .footer-main span {
+        .footer span {
             max-width: 75%;
             line-height: 1.4;
             text-align: left;
@@ -211,7 +274,7 @@
         /* Tombol Cookie di Kiri Bawah */
         .cookie-icon-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 15px;
             left: 20px;
             width: 36px;
             height: 36px;
@@ -240,17 +303,14 @@
 
             .menu-toggle {
                 display: block !important;
-                position: fixed;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
                 background: none;
                 border: none;
                 color: #d4b293;
-                font-size: 18px;
+                font-size: 16px;
                 letter-spacing: 4px;
                 font-weight: bold;
                 cursor: pointer;
+                padding-top: 30px;
                 z-index: 1001;
             }
 
@@ -301,22 +361,18 @@
                 height: 48vw;
             }
 
-            .footer-main {
+            .footer {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
                 gap: 12px;
-                padding: 0;
+                padding: 15px 20px;
             }
 
-            .footer-main span {
+            .footer span {
                 max-width: 100%;
                 font-size: 8px;
                 text-align: center;
-            }
-
-            .footer {
-                padding: 25px 20px;
             }
 
             .cookie-icon-btn {
@@ -335,71 +391,88 @@
 
     <!-- Navigasi Biasa untuk Laptop / Komputer -->
     <nav class="desktop-nav">
-        <a href="#home">HOME</a>
-        <a href="#video">VIDEO</a>
-        <a href="#music">MUSIC</a>
+        <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
+        <a onclick="openModal('videoModal')">VIDEO</a>
+        <a onclick="openModal('musicModal')">MUSIC</a>
     </nav>
 
     <!-- Menu Layar Penuh (Fullscreen) Khusus HP -->
     <div id="mobileMenu" class="mobile-fullscreen-menu">
-        <a href="#home" onclick="toggleMobileMenu()">HOME</a>
-        <a href="#music" onclick="toggleMobileMenu()">MUSIC</a>
-        <a href="#video" onclick="toggleMobileMenu()">VIDEO</a>
+        <a href="#" onclick="toggleMobileMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
+        <a onclick="toggleMobileMenu(); openModal('musicModal');">MUSIC</a>
+        <a onclick="toggleMobileMenu(); openModal('videoModal');">VIDEO</a>
     </div>
 
-    <!-- SECTION 1: HOME -->
-    <div id="home" class="section-page">
+    <!-- Konten Utama -->
+    <div class="content">
         <div class="logo-text">3H3D</div>
-        <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">LISTEN NOW</a>
+        <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- SECTION 2: VIDEO -->
-    <div id="video" class="section-page">
-        <div class="items-container">
-            <div class="item-card">
-                <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
-                <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
+    <!-- Modal Musik -->
+    <div id="musicModal" class="modal">
+        <div class="modal-content">
+            <h2>MUSIC</h2>
+            
+            <div class="vertical-scroll-container">
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
+                    <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
+                    <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
+                    <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Music 4" class="music-art">
+                    <a href="https://ffm.to/og-wesa" target="_blank" class="btn-action">Get It Now</a>
+                </div>
             </div>
-            <div class="item-card">
-                <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
-                <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
-            </div>
-            <div class="item-card">
-                <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
-                <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
-            </div>
+
+            <button class="close-modal-btn" onclick="closeModal('musicModal')">Tutup</button>
         </div>
     </div>
 
-    <!-- SECTION 3: MUSIC -->
-    <div id="music" class="section-page">
-        <div class="items-container">
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music 1" class="music-art">
-                <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-action">Get It Now</a>
+    <!-- Modal Video -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <h2>VIDEOS</h2>
+            
+            <div class="vertical-scroll-container">
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="btn-action">Watch Now</a>
+                </div>
+                <div class="item-card">
+                    <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4" class="video-art">
+                    <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="btn-action">Watch Now</a>
+                </div>
             </div>
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Music 2" class="music-art">
-                <a href="https://ffm.to/sogdai-ya" target="_blank" class="btn-action">Get It Now</a>
-            </div>
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Music 3" class="music-art">
-                <a href="https://ffm.to/toru-re" target="_blank" class="btn-action">Get It Now</a>
-            </div>
+
+            <button class="close-modal-btn" onclick="closeModal('videoModal')">Tutup</button>
         </div>
     </div>
 
-    <!-- Footer Bawah Menempel di Paling Bawah Halaman -->
+    <!-- Footer Bawah -->
     <div class="footer">
-        <a href="https://ffm.to/kwiregtori" target="_blank" class="footer-bio-link">FFM.TO/KWIREGTORI</a>
-        <div class="footer-main">
-            <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
+        <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
     </div>
 
@@ -413,6 +486,14 @@
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
         }
     </script>
 
