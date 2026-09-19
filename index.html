@@ -34,7 +34,7 @@
             align-items: center;
         }
 
-        /* Navbar Default (Hanya tampil di Layar Lebar/Laptop) */
+        /* Navbar Default untuk Komputer / Laptop */
         nav.desktop-nav {
             display: flex;
             gap: 45px;
@@ -56,7 +56,7 @@
             opacity: 0.7;
         }
 
-        /* Tombol MENU & Menu Fullscreen HP (Default disembunyikan) */
+        /* Tombol MENU & Menu Fullscreen HP (Default disembunyikan di Laptop) */
         .menu-toggle, 
         .mobile-fullscreen-menu {
             display: none;
@@ -68,17 +68,17 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 20px;
-            max-width: 100%;
+            padding: 10px;
+            margin-bottom: 40px; /* Jarak aman dari footer bawah */
             z-index: 5;
         }
 
         /* Gaya Logo */
         .logo-text {
             font-family: 'Rubik Mono One', sans-serif;
-            font-size: clamp(3rem, 12vw, 70px);
+            font-size: clamp(2.5rem, 8vw, 65px);
             letter-spacing: 4px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: #ffffff;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 
                          0 0 30px rgba(100, 100, 255, 0.6), 
@@ -135,7 +135,7 @@
             align-items: center;
             width: 100%;
             max-width: 650px;
-            height: 80vh; /* Disesuaikan agar tidak menabrak footer */
+            height: 75vh;
             padding: 20px;
         }
 
@@ -155,7 +155,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
             padding-right: 5px;
             padding-bottom: 30px;
         }
@@ -178,32 +178,32 @@
 
         /* Gaya Khusus Musik (Artwork Kotak) */
         .music-art {
-            width: 320px;
-            height: 320px;
+            width: 280px;
+            height: 280px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             filter: sepia(0.3) contrast(1.1);
         }
 
         /* Gaya Khusus Video (Artwork Landscape) */
         .video-art {
             width: 100%;
-            max-width: 520px;
-            height: 295px;
+            max-width: 480px;
+            height: 270px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         /* Tombol Aksi di Bawah Artwork */
         .btn-action {
             display: inline-block;
-            padding: 10px 35px;
+            padding: 9px 30px;
             border: 1px solid rgba(255, 255, 255, 0.8);
             background-color: transparent;
             color: #ffffff;
@@ -236,12 +236,12 @@
             color: #ffffff;
         }
 
-        /* Footer Bawah Dikunci (Z-index lebih tinggi dari modal agar selalu di atas) */
+        /* Footer Bawah Terkunci Permanen di Semua Halaman/Modal */
         .footer {
             position: fixed;
             bottom: 0;
             left: 0;
-            z-index: 3000; /* Berada di atas modal */
+            z-index: 3000;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -249,9 +249,8 @@
             padding: 15px 40px;
             font-size: 11px;
             color: #aaaaaa;
-            background: rgba(11, 11, 11, 0.8);
+            background: rgba(11, 11, 11, 0.85);
             backdrop-filter: blur(5px);
-            pointer-events: auto;
         }
 
         .social-icons {
@@ -270,7 +269,7 @@
             opacity: 0.7;
         }
 
-        /* Tombol Cookie di Kiri Bawah (Diatur agar tidak menutupi teks) */
+        /* Tombol Cookie di Kiri Bawah */
         .cookie-icon-btn {
             position: fixed;
             bottom: 60px;
@@ -294,8 +293,8 @@
             transform: scale(1.1);
         }
 
-        /* PENGATURAN KHUSUS HP */
-        @media screen and (max-width: 1024px) {
+        /* PENGATURAN KHUSUS HP (Max-width 768px agar hanya aktif di perangkat seluler murni) */
+        @media screen and (max-width: 768px) {
             nav.desktop-nav {
                 display: none !important;
             }
@@ -351,13 +350,13 @@
             }
 
             .music-art {
-                width: 250px;
-                height: 250px;
+                width: 240px;
+                height: 240px;
             }
 
             .video-art {
-                width: 90vw;
-                height: 50vw;
+                width: 88vw;
+                height: 48vw;
             }
 
             .footer {
