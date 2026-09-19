@@ -153,10 +153,15 @@
             gap: 12px;
             max-height: 50vh;
             overflow-y: auto;
+            padding-right: 5px;
         }
 
+        /* Styling Item dengan Artwork / Cover Gambar */
         .link-item {
-            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ffffff;
@@ -165,6 +170,15 @@
             letter-spacing: 1px;
             transition: all 0.3s;
             border-radius: 5px;
+            text-align: left;
+        }
+
+        .link-item img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .link-item:hover {
@@ -246,12 +260,10 @@
 
         /* PENGATURAN KHUSUS HP (Max-width 768px) */
         @media screen and (max-width: 768px) {
-            /* Sembunyikan navbar laptop di HP */
             nav.desktop-nav {
                 display: none !important;
             }
 
-            /* Tombol MENU di HP */
             .menu-toggle {
                 display: block !important;
                 background: none;
@@ -265,7 +277,6 @@
                 z-index: 1001;
             }
 
-            /* Menu Fullscreen HP (Diatur agar benar-benar vertikal ke bawah) */
             .mobile-fullscreen-menu {
                 display: none;
                 position: fixed;
@@ -286,7 +297,6 @@
                 display: flex !important;
             }
 
-            /* Teks menu di dalam HP saat dibuka (Tampil rapi berbaris ke bawah) */
             .mobile-fullscreen-menu a {
                 color: #ffffff;
                 text-decoration: none;
@@ -346,31 +356,56 @@
         <a href="https://ffm.to/kwiregtori" target="_blank" class="btn-listen">Listen Now</a>
     </div>
 
-    <!-- Modal Daftar Video -->
+    <!-- Modal Daftar Video dengan Cover Artwork -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <h2>PILIHAN VIDEO</h2>
             <div class="link-list">
-                <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="link-item">Video Official 1</a>
-                <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="link-item">Video Official 2</a>
-                <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="link-item">Video Official 3</a>
-                <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="link-item">Video Official 4</a>
+                <a href="https://www.youtube.com/watch?v=4yGWl7lwwUY" target="_blank" class="link-item">
+                    <img src="https://img.youtube.com/vi/4yGWl7lwwUY/hqdefault.jpg" alt="Video 1">
+                    <span>Video Official 1</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=MJS3ca-VP-8" target="_blank" class="link-item">
+                    <img src="https://img.youtube.com/vi/MJS3ca-VP-8/hqdefault.jpg" alt="Video 2">
+                    <span>Video Official 2</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=acjp11UXUeA" target="_blank" class="link-item">
+                    <img src="https://img.youtube.com/vi/acjp11UXUeA/hqdefault.jpg" alt="Video 3">
+                    <span>Video Official 3</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=H9o2nzykIso" target="_blank" class="link-item">
+                    <img src="https://img.youtube.com/vi/H9o2nzykIso/hqdefault.jpg" alt="Video 4">
+                    <span>Video Official 4</span>
+                </a>
             </div>
             <button class="close-btn" onclick="closeModal('videoModal')">TUTUP</button>
         </div>
     </div>
 
-    <!-- Modal Daftar Musik -->
+    <!-- Modal Daftar Musik dengan Cover Artwork -->
     <div id="musicModal" class="modal">
         <div class="modal-content">
             <h2>PLATFORM MUSIK</h2>
             <div class="link-list">
-                <a href="https://ffm.to/kwiregtori" target="_blank" class="link-item">Kwiregtori</a>
-                <a href="https://ffm.to/sogdai-ya" target="_blank" class="link-item">Sogdai-Ya</a>
-                <a href="https://ffm.to/toru-re" target="_blank" class="link-item">Toru-Re</a>
-                <a href="https://ffm.to/og-wesa" target="_blank" class="link-item">Og-Wesa</a>
+                <!-- Ganti link gambar di bawah dengan foto cover lagu Anda sendiri -->
+                <a href="https://ffm.to/kwiregtori" target="_blank" class="link-item">
+                    <img src="https://picsum.photos/seed/kwiregtori/100/100" alt="Kwiregtori">
+                    <span>Kwiregtori</span>
+                </a>
+                <a href="https://ffm.to/sogdai-ya" target="_blank" class="link-item">
+                    <img src="https://picsum.photos/seed/sogdaiya/100/100" alt="Sogdai-Ya">
+                    <span>Sogdai-Ya</span>
+                </a>
+                <a href="https://ffm.to/toru-re" target="_blank" class="link-item">
+                    <img src="https://picsum.photos/seed/torure/100/100" alt="Toru-Re">
+                    <span>Toru-Re</span>
+                </a>
+                <a href="https://ffm.to/og-wesa" target="_blank" class="link-item">
+                    <img src="https://picsum.photos/seed/ogwesa/100/100" alt="Og-Wesa">
+                    <span>Og-Wesa</span>
+                </a>
             </div>
-            <button class="close-btn" onclick="closeModal('musicModal')">TUTUP</button>
+            <button class="close-btn" onclick="closeModal('musicModal')">TUTUP / CLOSE</button>
         </div>
     </div>
 
