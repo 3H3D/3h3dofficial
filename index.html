@@ -34,8 +34,8 @@
             align-items: center;
         }
 
-        /* Navbar Default untuk Laptop/Komputer */
-        nav {
+        /* Navbar Default untuk Laptop / Komputer */
+        nav.desktop-nav {
             display: flex;
             gap: 30px;
             padding-top: 30px;
@@ -45,29 +45,21 @@
             z-index: 10;
         }
 
-        nav a {
+        nav.desktop-nav a {
             color: #ffffff;
             text-decoration: none;
             transition: opacity 0.3s;
             cursor: pointer;
         }
 
-        nav a:hover {
+        nav.desktop-nav a:hover {
             opacity: 0.7;
         }
 
-        /* Tombol Hamburger khusus HP (Disembunyikan di Laptop) */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 14px;
-            letter-spacing: 3px;
-            font-weight: bold;
-            cursor: pointer;
-            padding-top: 25px;
-            z-index: 1001;
+        /* Tombol MENU & Menu Fullscreen HP (Wajib disembunyikan di Laptop) */
+        .menu-toggle, 
+        .mobile-fullscreen-menu {
+            display: none !important;
         }
 
         /* Konten Utama */
@@ -254,16 +246,26 @@
 
         /* PENGATURAN KHUSUS HP (Max-width 768px) */
         @media screen and (max-width: 768px) {
-            /* Sembunyikan navbar biasa, tampilkan tombol menu */
+            /* Sembunyikan navbar laptop di HP */
             nav.desktop-nav {
-                display: none;
+                display: none !important;
             }
 
+            /* Munculkan tombol MENU khusus HP */
             .menu-toggle {
-                display: block;
+                display: block !important;
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 14px;
+                letter-spacing: 3px;
+                font-weight: bold;
+                cursor: pointer;
+                padding-top: 25px;
+                z-index: 1001;
             }
 
-            /* Overlay Menu Fullscreen ala Chris Brown saat diklik */
+            /* Overlay Menu Fullscreen HP */
             .mobile-fullscreen-menu {
                 display: none;
                 position: fixed;
@@ -281,7 +283,7 @@
             }
 
             .mobile-fullscreen-menu.active {
-                display: flex;
+                display: flex !important;
             }
 
             .mobile-fullscreen-menu a {
@@ -327,7 +329,7 @@
 </head>
 <body>
 
-    <!-- Tombol MENU untuk HP -->
+    <!-- Tombol MENU khusus HP -->
     <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
 
     <!-- Navigasi Biasa untuk Laptop / Komputer -->
@@ -337,7 +339,7 @@
         <a onclick="openModal('musicModal')">MUSIC</a>
     </nav>
 
-    <!-- Menu Layar Penuh (Fullscreen) Khusus HP ala Chris Brown -->
+    <!-- Menu Layar Penuh (Fullscreen) Khusus HP -->
     <div id="mobileMenu" class="mobile-fullscreen-menu">
         <button class="close-menu-btn" onclick="toggleMobileMenu()">TUTUP</button>
         <a href="#" onclick="toggleMobileMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); return false;">HOME</a>
@@ -381,7 +383,7 @@
 
     <!-- Footer Bawah -->
     <div class="footer">
-        <span>© 2026 FERWAP MUSIC | ALL RIGHTS RESERVED | TERMS AND CONDITIONS | PRIVACY POLICY</span>
+        <span>© 2026 3H3D OFFICIAL. ALL RIGHTS RESERVED. TERMS AND CONDITIONS | PRIVACY POLICY</span>
         <div class="social-icons">
             <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
