@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3H3D - Official Shop</title>
+    <title>3H3D - Official Store</title>
     <style>
         * {
             margin: 0;
@@ -13,33 +13,50 @@
         }
 
         body {
-            background-color: #1a1512; /* Warna dasar gelap selaras dengan website Anda */
-            color: #d4b59d; /* Warna teks krem/emas */
+            background-color: #1c1512;
+            color: #d4b59d;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        /* Navigasi */
+        /* Header & Navigasi */
         header {
+            background-color: #14100e;
+            border-bottom: 1px solid #352a23;
+            padding: 20px 40px;
             display: flex;
-            justify-content: center;
-            padding: 30px 0;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .store-logo {
+            font-size: 24px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 25px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         nav ul li a {
             color: #d4b59d;
             text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 3px;
-            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
             transition: opacity 0.3s;
         }
 
@@ -47,52 +64,62 @@
             opacity: 0.6;
         }
 
-        /* Hero Banner Produk Unggulan (Gaya Chris Brown Store) */
-        .hero-shop {
-            position: relative;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1500&q=80') center/cover;
-            padding: 80px 20px;
-            text-align: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid #3a2e28;
+        /* Tombol Keranjang Belanja di Header */
+        .cart-btn {
+            background: #231b16;
+            border: 1px solid #45362e;
+            color: #d4b59d;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
         }
 
-        .hero-content h1 {
-            font-size: clamp(30px, 5vw, 60px);
-            letter-spacing: 5px;
-            margin-bottom: 15px;
+        .cart-btn:hover {
+            background: #d4b59d;
+            color: #1c1512;
+        }
+
+        .cart-count {
+            background: #ffffff;
+            color: #1c1512;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Banner Toko Bersih */
+        .shop-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1500&q=80') center/cover;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #352a23;
+        }
+
+        .shop-banner h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            font-family: serif;
+            color: #e3c5ad;
             text-transform: uppercase;
         }
 
-        .hero-content p {
-            font-size: 16px;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .btn-preorder {
-            display: inline-block;
-            padding: 12px 35px;
-            border: 1px solid #d4b59d;
-            color: #d4b59d;
-            text-decoration: none;
-            letter-spacing: 2px;
+        .shop-banner p {
             font-size: 13px;
-            font-weight: bold;
-            background: rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            opacity: 0.8;
         }
 
-        .btn-preorder:hover {
-            background: #d4b59d;
-            color: #1a1512;
-        }
-
-        /* Katalog Produk Grid */
+        /* Katalog Produk */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1100px;
+            margin: 40px auto;
             padding: 0 20px;
             width: 100%;
         }
@@ -100,8 +127,8 @@
         .section-title {
             text-align: center;
             letter-spacing: 3px;
-            margin-bottom: 40px;
-            font-size: 20px;
+            margin-bottom: 30px;
+            font-size: 18px;
             text-transform: uppercase;
         }
 
@@ -109,58 +136,165 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
-            margin-bottom: 80px;
         }
 
         .product-card {
             background: #231b16;
-            border: 1px solid #3a2e28;
+            border: 1px solid #352a23;
             padding: 15px;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-img {
             width: 100%;
-            height: 280px;
+            height: 240px;
             object-fit: cover;
             margin-bottom: 15px;
-            background-color: #333;
         }
 
         .product-title {
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: 1px;
             margin-bottom: 8px;
         }
 
         .product-price {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.8;
             margin-bottom: 15px;
         }
 
-        .btn-buy {
+        .btn-add {
             display: block;
             width: 100%;
             padding: 10px;
             background: transparent;
             border: 1px solid #d4b59d;
             color: #d4b59d;
-            text-decoration: none;
-            font-size: 12px;
+            cursor: pointer;
+            font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: 0.3s;
         }
 
-        .btn-buy:hover {
+        .btn-add:hover {
             background: #d4b59d;
-            color: #1a1512;
+            color: #1c1512;
+        }
+
+        /* Panel Keranjang Belanja Samping (Cart Modal) */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: #14100e;
+            border-left: 1px solid #352a23;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.7);
+            transition: right 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #352a23;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .cart-header h2 {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #d4b59d;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #231b16;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #352a23;
+            font-size: 12px;
+        }
+
+        .cart-item-details div {
+            margin-bottom: 3px;
+        }
+
+        .cart-item-price {
+            opacity: 0.8;
+        }
+
+        .btn-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #352a23;
+            padding-top: 15px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #d4b59d;
+            border: none;
+            color: #1c1512;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 11px;
+            transition: 0.3s;
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.8;
         }
 
         /* Footer */
@@ -169,95 +303,181 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 1px;
             border-top: 1px solid #2a211c;
             opacity: 0.7;
-        }
-
-        .social-links a {
-            color: #d4b59d;
-            text-decoration: none;
-            margin-left: 20px;
+            background-color: #14100e;
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                gap: 20px;
-                font-size: 12px;
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
             }
             footer {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
             }
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigasi -->
+    <!-- Header & Navigasi Toko -->
     <header>
+        <a href="shop.html" class="store-logo">3H3D STORE</a>
         <nav>
             <ul>
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="video.html">VIDEO</a></li>
-                <li><a href="music.html">MUSIC</a></li>
                 <li><a href="shop.html" class="active">SHOP</a></li>
+                <li><a href="#">APPAREL</a></li>
             </ul>
         </nav>
+        <!-- Tombol Keranjang Belanja -->
+        <button class="cart-btn" onclick="toggleCart()">
+            CART <span class="cart-count" id="cartCount">0</span>
+        </button>
     </header>
 
-    <!-- Banner Utama / Hero Shop -->
-    <section class="hero-shop">
-        <div class="hero-content">
-            <h1>3H3D - NEW VINYL RELEASE</h1>
-            <p>LIMITED EDITION 3LP GLITTER VINYL</p>
-            <a href="https://wa.me/nomorwhatsappanda" target="_blank" class="btn-preorder">PRE-ORDER NOW</a>
-        </div>
+    <!-- Banner Toko -->
+    <section class="shop-banner">
+        <h1>OFFICIAL MERCHANDISE & RELEASES</h1>
+        <p>Pilih produk favorit Anda dan lakukan checkout langsung dari website.</p>
     </section>
 
-    <!-- Katalog Produk -->
+    <!-- Katalog Produk & Tombol Beli -->
     <div class="container">
-        <h2 class="section-title">Official Merchandise & Music</h2>
-        
+        <h2 class="section-title">Katalog Produk</h2>
         <div class="product-grid">
-            <!-- Produk 1 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=600&q=80" alt="Vinyl Album" class="product-img">
-                <div class="product-title">3H3D - Deluxe Vinyl LP</div>
-                <div class="product-price">Rp 450.000</div>
-                <a href="https://wa.me/nomorwhatsappanda?text=Halo,%20saya%20mau%20pesan%20Vinyl%20LP" target="_blank" class="btn-buy">Buy Now</a>
+                <img src="https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=600&q=80" alt="Vinyl" class="product-img">
+                <div>
+                    <div class="product-title">3H3D - Vinyl Album</div>
+                    <div class="product-price">Rp 450.000</div>
+                </div>
+                <button class="btn-add" onclick="addToCart('3H3D - Vinyl Album', 450000)">Add to Cart</button>
             </div>
 
-            <!-- Produk 2 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="T-Shirt" class="product-img">
-                <div class="product-title">Tour Exclusive T-Shirt</div>
-                <div class="product-price">Rp 250.000</div>
-                <a href="https://wa.me/nomorwhatsappanda?text=Halo,%20saya%20mau%20pesan%20T-Shirt" target="_blank" class="btn-buy">Buy Now</a>
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Merch" class="product-img">
+                <div>
+                    <div class="product-title">Tour T-Shirt</div>
+                    <div class="product-price">Rp 250.000</div>
+                </div>
+                <button class="btn-add" onclick="addToCart('Tour T-Shirt', 250000)">Add to Cart</button>
             </div>
 
-            <!-- Produk 3 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="CD Album" class="product-img">
-                <div class="product-title">Limited Edition CD Album</div>
-                <div class="product-price">Rp 175.000</div>
-                <a href="https://wa.me/nomorwhatsappanda?text=Halo,%20saya%20mau%20pesan%20CD%20Album" target="_blank" class="btn-buy">Buy Now</a>
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="CD" class="product-img">
+                <div>
+                    <div class="product-title">CD Album Edition</div>
+                    <div class="product-price">Rp 175.000</div>
+                </div>
+                <button class="btn-add" onclick="addToCart('CD Album Edition', 175000)">Add to Cart</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Panel Keranjang Belanja (Sidebar Modal) -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Your Shopping Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <p style="font-size: 12px; opacity: 0.6; text-align: center; margin-top: 40px;">Keranjang belanja Anda masih kosong.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>TOTAL:</span>
+                <span id="cartTotalPrice">Rp 0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div>3H3D FERWAP MUSIC | ALL RIGHTS RESERVED | TERMS AND CONDITIONS | PRIVACY POLICY</div>
-        <div class="social-links">
-            <a href="#">F</a>
-            <a href="#">X</a>
-            <a href="#">IG</a>
-            <a href="#">YT</a>
-        </div>
+        <div>3H3D FERWAP MUSIC | ALL RIGHTS RESERVED</div>
+        <div>SECURE DIRECT CHECKOUT</div>
     </footer>
+
+    <!-- Skrip JavaScript Keranjang & Checkout -->
+    <script>
+        let cart = [];
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('open');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalCount;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="font-size: 12px; opacity: 0.6; text-align: center; margin-top: 40px;">Keranjang belanja Anda masih kosong.</p>';
+                cartTotalPrice.textContent = 'Rp 0';
+                return;
+            }
+
+            let html = '';
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                totalPrice += item.price * item.quantity;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <div style="font-weight: bold;">${item.name}</div>
+                            <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}</div>
+                        </div>
+                        <button class="btn-remove" onclick="removeFromCart(${index})">Hapus</button>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = html;
+            cartTotalPrice.textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Keranjang belanja Anda masih kosong!');
+                return;
+            }
+            alert('Terima kasih! Pesanan Anda berhasil diproses.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
 
 </body>
 </html>
