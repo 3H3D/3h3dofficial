@@ -2,798 +2,524 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>3H3D - Shop</title>
-    <!-- FontAwesome untuk Ikon Sosial Media -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3H3D - Official Store</title>
+    <!-- Tambahan FontAwesome untuk Ikon Sosial Media -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rubik+Mono+One&display=swap" rel="stylesheet">
-    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            background: #1c1410;
-            color: #d4b293 !important;
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
+            background-color: #1c1512;
+            color: #d4b59d;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: center;
-            overflow-y: auto;
         }
 
-        /* Navbar Default (Laptop) */
-        nav.desktop-nav {
+        /* Header & Navigasi */
+        header {
+            background-color: #14100e;
+            border-bottom: 1px solid #352a23;
+            padding: 20px 40px;
             display: flex;
-            gap: 45px;
-            padding-top: 35px;
-            font-size: 16px;
-            letter-spacing: 3px;
-            font-weight: bold;
-            z-index: 10;
-        }
-
-        nav.desktop-nav a {
-            color: #d4b293;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            cursor: pointer;
-        }
-
-        nav.desktop-nav a:hover {
-            opacity: 0.7;
-        }
-
-        /* Tombol MENU & Menu Fullscreen HP */
-        .menu-toggle,
-        .mobile-fullscreen-menu {
-            display: none;
-        }
-
-        /* Konten Utama SHOP */
-        .content {
-            display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            width: 100%;
-            max-width: 600px; /* Lebar dibatasi agar rapi secara vertikal */
-            flex: 1;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .content h2 {
-            font-size: 16px;
+        .store-logo {
+            font-size: 24px;
             letter-spacing: 5px;
-            margin-bottom: 35px;
-            color: #d4b293;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: #d4b59d;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            opacity: 0.6;
+        }
+
+        /* Tombol Keranjang Belanja di Header */
+        .cart-btn {
+            background: #231b16;
+            border: 1px solid #45362e;
+            color: #d4b59d;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: #d4b59d;
+            color: #1c1512;
+        }
+
+        .cart-count {
+            background: #ffffff;
+            color: #1c1512;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Banner Toko Bersih */
+        .shop-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1500&q=80') center/cover;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #352a23;
+        }
+
+        .shop-banner h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            font-family: serif;
+            color: #e3c5ad;
             text-transform: uppercase;
         }
 
-        /* Tampilan Produk Vertikal Kebawah */
-        .shop-vertical-list {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .shop-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(212, 178, 147, 0.03);
-            border: 1px solid rgba(212, 178, 147, 0.2);
-            border-radius: 6px;
-            padding: 25px;
-            transition: transform 0.3s ease;
-            width: 100%;
-        }
-
-        .shop-item:hover {
-            transform: translateY(-3px);
-            border-color: rgba(212, 178, 147, 0.5);
-        }
-
-        .shop-img {
-            width: 100%;
-            max-height: 320px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(212, 178, 147, 0.2);
-        }
-
-        .shop-title {
-            font-size: 15px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .shop-price {
+        .shop-banner p {
             font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 18px;
+            letter-spacing: 2px;
             opacity: 0.8;
         }
 
-        .btn-action {
-            display: inline-block;
-            padding: 10px 30px;
-            border: 1px solid rgba(212, 178, 147, 0.8);
-            background-color: transparent;
-            color: #d4b293;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 3px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-action:hover {
-            background-color: #d4b293;
-            color: #1c1410;
-        }
-
-        /* Footer Melebar Penuh */
-        .footer {
+        /* Katalog Produk */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
             width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #231b16;
+            border: 1px solid #352a23;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .btn-add {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid #d4b59d;
+            color: #d4b59d;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-add:hover {
+            background: #d4b59d;
+            color: #1c1512;
+        }
+
+        /* Panel Keranjang Belanja Samping (Cart Modal) */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: #14100e;
+            border-left: 1px solid #352a23;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.7);
+            transition: right 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 35px;
-            font-size: 9px;
-            letter-spacing: 0.8px;
-            color: #b0a8a0;
-            background: transparent;
+            border-bottom: 1px solid #352a23;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
 
-        .footer span {
-            text-align: left;
+        .cart-header h2 {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #d4b59d;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #231b16;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #352a23;
+            font-size: 12px;
+        }
+
+        .cart-item-details div {
+            margin-bottom: 3px;
+        }
+
+        .cart-item-price {
+            opacity: 0.8;
+        }
+
+        .btn-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #352a23;
+            padding-top: 15px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #d4b59d;
+            border: none;
+            color: #1c1512;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 11px;
+            transition: 0.3s;
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer yang disamakan dengan Home */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            border-top: 1px solid #2a211c;
+            opacity: 0.8;
+            background-color: #14100e;
+        }
+
+        .footer-left {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-left a {
+            color: #d4b59d;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-left a:hover {
+            opacity: 0.6;
         }
 
         .social-icons {
             display: flex;
-            gap: 22px;
+            gap: 15px;
         }
 
         .social-icons a {
-            color: #d4b293;
-            font-size: 14px;
+            color: #d4b59d;
             text-decoration: none;
+            font-size: 14px;
             transition: opacity 0.3s;
         }
 
         .social-icons a:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
-        /* Tombol Cookie Bulat Hijau */
-        .cookie-icon-btn {
-            position: fixed;
-            bottom: 15px;
-            left: 20px;
-            width: 44px;
-            height: 44px;
-            background-color: #12803b;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            cursor: pointer;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .cookie-icon-btn:hover {
-            transform: scale(1.1);
-            background-color: #0e662f;
-        }
-
-        /* --- STYLING MODAL / POPUP COOKIE (GAYA ONETRUST) --- */
-        .ot-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-
-        .ot-modal.active {
-            display: flex;
-        }
-
-        .ot-modal-container {
-            background: #ffffff;
-            color: #222222;
-            border-radius: 4px;
-            width: 90%;
-            max-width: 480px;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .ot-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .ot-logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-            font-size: 15px;
-            letter-spacing: 0.5px;
-            color: #000;
-        }
-
-        .ot-logo-icon {
-            background: #e61c24;
-            color: white;
-            font-size: 10px;
-            font-weight: 900;
-            padding: 3px 5px;
-            border-radius: 2px;
-            letter-spacing: -1px;
-        }
-
-        .ot-close-btn {
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            color: #555;
-            padding: 5px;
-        }
-
-        .ot-close-btn:hover {
-            color: #000;
-        }
-
-        .ot-body {
-            padding: 25px;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #444;
-        }
-
-        .ot-body h2 {
-            font-size: 18px;
-            color: #111;
-            margin-bottom: 12px;
-        }
-
-        .ot-body p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        .ot-link {
-            color: #0056b3;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .ot-section-title {
-            font-weight: bold;
-            font-size: 14px;
-            color: #111;
-            margin: 20px 0 12px 0;
-        }
-
-        .ot-accordion {
-            border: 1px solid #dcdcdc;
-            border-radius: 3px;
-            margin-bottom: 8px;
-            background: #fff;
-        }
-
-        .ot-acc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .ot-acc-title-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #222;
-        }
-
-        .ot-acc-icon {
-            font-size: 11px;
-            color: #666;
-            transition: transform 0.2s;
-        }
-
-        .ot-accordion.open .ot-acc-icon {
-            transform: rotate(90deg);
-        }
-
-        .ot-acc-content {
-            display: none;
-            padding: 0 15px 15px 38px;
-            font-size: 12px;
-            color: #666;
-            border-top: 1px solid #f0f0f0;
-            margin-top: 5px;
-            padding-top: 10px;
-        }
-
-        .ot-accordion.open .ot-acc-content {
-            display: block;
-        }
-
-        .ot-switch-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ot-always-active {
-            font-size: 12px;
-            font-weight: 600;
-            color: #0070c0;
-        }
-
-        .ot-switch {
-            position: relative;
-            display: inline-block;
-            width: 44px;
-            height: 24px;
-        }
-
-        .ot-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .ot-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc;
-            transition: .3s;
-            border-radius: 24px;
-        }
-
-        .ot-slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .ot-slider {
-            background-color: #12803b;
-        }
-
-        input:checked + .ot-slider:before {
-            transform: translateX(20px);
-        }
-
-        .ot-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 25px;
-            background: #f9f9f9;
-            border-top: 1px solid #e0e0e0;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .ot-action-buttons {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .ot-btn {
-            flex: 1;
-            padding: 10px 15px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 3px;
-            cursor: pointer;
-            text-align: center;
-            border: 1px solid #111;
-            transition: background 0.2s;
-        }
-
-        .ot-btn-reject {
-            background: #ffffff;
-            color: #111;
-        }
-
-        .ot-btn-reject:hover {
-            background: #f0f0f0;
-        }
-
-        .ot-btn-confirm {
-            background: #111;
-            color: #ffffff;
-        }
-
-        .ot-btn-confirm:hover {
-            background: #333;
-        }
-
-        .ot-powered {
-            font-size: 10px;
-            color: #777;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: auto;
-        }
-
-        .ot-powered b {
-            font-size: 9px;
-            letter-spacing: -0.5px;
-        }
-
-        /* RESPONSIF HP */
-        @media screen and (max-width: 1024px) {
-            nav.desktop-nav {
-                display: none !important;
-            }
-
-            .menu-toggle {
-                display: block !important;
-                background: none;
-                border: none;
-                color: #d4b293;
-                font-size: 16px;
-                letter-spacing: 4px;
-                font-weight: bold;
-                cursor: pointer;
-                padding-top: 30px;
-                z-index: 1001;
-            }
-
-            .mobile-fullscreen-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(28, 20, 16, 0.98);
-                backdrop-filter: blur(15px);
-                z-index: 1000;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
-                gap: 25px !important;
-            }
-
-            .mobile-fullscreen-menu.active {
-                display: flex !important;
-            }
-
-            .mobile-fullscreen-menu a {
-                color: #d4b293;
-                text-decoration: none;
-                font-size: 18px;
-                letter-spacing: 4px;
-                font-weight: bold;
-                padding: 10px;
-                display: block !important;
-                width: 100%;
-                text-align: center;
-            }
-
-            .footer {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-                gap: 12px;
+        @media (max-width: 768px) {
+            header {
                 padding: 15px 20px;
+                flex-direction: column;
             }
-
-            .footer span {
-                font-size: 7.5px;
+            footer {
+                flex-direction: column;
+                gap: 15px;
                 text-align: center;
             }
-
-            .cookie-icon-btn {
-                bottom: 15px;
-                left: 15px;
-                width: 40px;
-                height: 40px;
-            }
-
-            .ot-footer {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .ot-powered {
-                margin-left: 0;
-                justify-content: center;
-            }
-
-            .ot-action-buttons {
-                max-width: 100%;
+            .cart-modal {
+                width: 100%;
+                right: -100%;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Tombol MENU khusus HP -->
-    <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
+    <!-- Header & Navigasi Toko -->
+    <header>
+        <a href="shop.html" class="store-logo">3H3D STORE</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="shop.html" class="active">SHOP</a></li>
+                <li><a href="#">APPAREL</a></li>
+            </ul>
+        </nav>
+        <!-- Tombol Keranjang Belanja -->
+        <button class="cart-btn" onclick="toggleCart()">
+            CART <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </header>
 
-    <!-- Navigasi Utama -->
-    <nav class="desktop-nav">
-        <a href="index.html">HOME</a>
-        <a href="index.html">VIDEO</a>
-        <a href="index.html">MUSIC</a>
-        <a href="shop.html">SHOP</a>
-    </nav>
+    <!-- Banner Toko -->
+    <section class="shop-banner">
+        <h1>OFFICIAL MERCHANDISE & RELEASES</h1>
+        <p>Pilih produk favorit Anda dan lakukan checkout langsung dari website.</p>
+    </section>
 
-    <!-- Menu Layar Penuh HP -->
-    <div id="mobileMenu" class="mobile-fullscreen-menu">
-        <a href="index.html">HOME</a>
-        <a href="index.html">VIDEO</a>
-        <a href="index.html">MUSIC</a>
-        <a href="shop.html">SHOP</a>
-    </div>
+    <!-- Katalog Produk & Tombol Beli -->
+    <div class="container">
+        <h2 class="section-title">Katalog Produk</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=600&q=80" alt="Vinyl" class="product-img">
+                <div>
+                    <div class="product-title">3H3D - Vinyl Album</div>
+                    <div class="product-price">Rp 450.000</div>
+                </div>
+                <button class="btn-add" onclick="addToCart('3H3D - Vinyl Album', 450000)">Add to Cart</button>
+            </div>
 
-    <!-- KONTEN SHOP (VERTIKAL KE BAWAH) -->
-    <div class="content">
-        <h2>MERCHANDISE & SHOP</h2>
-        <div class="shop-vertical-list">
-            <div class="shop-item">
-                <img src="Kwiregtori.png" alt="Merch 1" class="shop-img">
-                <div class="shop-title">Kwiregtri</div>
-                <div class="shop-price">IDR 250.000</div>
-                <a href="#" class="btn-action">Buy Now</a>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Merch" class="product-img">
+                <div>
+                    <div class="product-title">Tour T-Shirt</div>
+                    <div class="product-price">Rp 250.000</div>
+                </div>
+                <button class="btn-add" onclick="addToCart('Tour T-Shirt', 250000)">Add to Cart</button>
             </div>
-            <div class="shop-item">
-                <img src="Sogdai Ya.png" alt="Merch 2" class="shop-img">
-                <div class="shop-title">Sogdai Ya</div>
-                <div class="shop-price">IDR 450.000</div>
-                <a href="#" class="btn-action">Buy Now</a>
-            </div>
-            <div class="shop-item">
-                <img src="TORU RE.jpg" alt="Merch 3" class="shop-img">
-                <div class="shop-title">TORU RE</div>
-                <div class="shop-price">IDR 150.000</div>
-                <a href="#" class="btn-action">Buy Now</a>
-            </div>
-            <div class="shop-item">
-                <img src="Og Wesa.jpg" alt="Merch 4" class="shop-img">
-                <div class="shop-title">Og Wesa</div>
-                <div class="shop-price">IDR 120.000</div>
-                <a href="#" class="btn-action">Buy Now</a>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="CD" class="product-img">
+                <div>
+                    <div class="product-title">CD Album Edition</div>
+                    <div class="product-price">Rp 175.000</div>
+                </div>
+                <button class="btn-add" onclick="addToCart('CD Album Edition', 175000)">Add to Cart</button>
             </div>
         </div>
     </div>
 
-    <!-- Footer Melebar Penuh -->
-    <div class="footer">
-        <span>© 2026 FERWAP MUSIC | ALL RIGHTS RESERVED | TERMS AND CONDITIONS | PRIVACY POLICY</span>
+    <!-- Panel Keranjang Belanja (Sidebar Modal) -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Your Shopping Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <p style="font-size: 12px; opacity: 0.6; text-align: center; margin-top: 40px;">Keranjang belanja Anda masih kosong.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>TOTAL:</span>
+                <span id="cartTotalPrice">Rp 0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Footer yang Disamakan dengan Home -->
+    <footer>
+        <div class="footer-left">
+            <span>© 2026 FERWAP MUSIC | ALL RIGHTS RESERVED</span>
+        </div>
         <div class="social-icons">
-            <a href="https://www.facebook.com/3h3dofficial" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/3h3dofficial" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://x.com/3h3dofficial" target="_blank" title="X"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-            <a href="https://www.instagram.com/3h3dofficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/@3h3dofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/3h3dofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@3h3dofficial" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
-    </div>
+    </footer>
 
-    <!-- Tombol Cookie Bulat Hijau -->
-    <div class="cookie-icon-btn" onclick="toggleCookieModal()" title="Privacy Preference Center">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M14.5 2.1c.4.2.8.5 1 .9.3.5.4 1 .3 1.6-.1.4-.4.8-.7 1.1s-.7.5-1.1.7c-.5.1-1 .1-1.5.1-3.9 0-7 3.1-7 7s3.1 7 7 7c1.4 0 2.8-.4 4-1.2.5-.3 1-.3 1.5-.1.5.2.9.6 1.1 1.1.3.5.4 1.1.3 1.6-.2.6-.6 1-1.1 1.3-2.1 1.3-4.6 2-7.2 2C6.5 21.5 2 17 2 11.5S6.5 1.5 12 1.5c.8 0 1.7.1 2.5.6z"/>
-            <circle cx="10" cy="8" r="1"/>
-            <circle cx="15" cy="7" r="0.8"/>
-            <circle cx="18" cy="11" r="0.8"/>
-            <circle cx="9" cy="14" r="1.5"/>
-            <circle cx="14" cy="14" r="1.2"/>
-            <circle cx="11" cy="11" r="0.6"/>
-            <path d="M17.5 15.5c.3.5.5 1 .6 1.5"/>
-        </svg>
-    </div>
-
-    <!-- MODAL POP-UP PRIVACY PREFERENCE CENTER -->
-    <div id="cookieModal" class="ot-modal">
-        <div class="ot-modal-container">
-            <!-- Header -->
-            <div class="ot-header">
-                <div class="ot-logo-area">
-                    <span class="ot-logo-icon">OS</span> OneTrust
-                </div>
-                <button class="ot-close-btn" onclick="toggleCookieModal()"><i class="fas fa-times"></i></button>
-            </div>
-
-            <!-- Body -->
-            <div class="ot-body">
-                <h2>Privacy Preference Center</h2>
-                <p>When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences, or your device and is mostly used to make the site work as you expect. The information does not usually identify you directly, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to learn more and change our default settings. Blocking some types of cookies may impact your experience of the site and the services we are able to offer. <span class="ot-link">More information</span></p>
-
-                <div class="ot-section-title">Manage Consent Preferences</div>
-
-                <!-- Kategori 1: Analytics -->
-                <div class="ot-accordion" id="acc1">
-                    <div class="ot-acc-header" onclick="toggleAccordion('acc1')">
-                        <div class="ot-acc-title-area">
-                            <i class="fas fa-chevron-right ot-acc-icon"></i>
-                            <span>Analytics & performance</span>
-                        </div>
-                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
-                            <label class="ot-switch">
-                                <input type="checkbox" id="chkAnalytics" checked>
-                                <span class="ot-slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="ot-acc-content">
-                        Cookie ini membantu kami mengukur lalu lintas kunjungan dan memahami bagaimana pengunjung berinteraksi dengan situs web 3H3D agar kami dapat terus meningkatkan kinerjanya.
-                    </div>
-                </div>
-
-                <!-- Kategori 2: Functional -->
-                <div class="ot-accordion" id="acc2">
-                    <div class="ot-acc-header" onclick="toggleAccordion('acc2')">
-                        <div class="ot-acc-title-area">
-                            <i class="fas fa-chevron-right ot-acc-icon"></i>
-                            <span>Functional</span>
-                        </div>
-                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
-                            <label class="ot-switch">
-                                <input type="checkbox" id="chkFunctional" checked>
-                                <span class="ot-slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="ot-acc-content">
-                        Memungkinkan situs web untuk menyediakan fungsionalitas dan personalisasi yang ditingkatkan, seperti mengingat preferensi bahasa atau wilayah Anda.
-                    </div>
-                </div>
-
-                <!-- Kategori 3: Essential -->
-                <div class="ot-accordion" id="acc3">
-                    <div class="ot-acc-header" onclick="toggleAccordion('acc3')">
-                        <div class="ot-acc-title-area">
-                            <i class="fas fa-chevron-right ot-acc-icon"></i>
-                            <span>Essential</span>
-                        </div>
-                        <div class="ot-switch-wrap">
-                            <span class="ot-always-active">Always Active</span>
-                        </div>
-                    </div>
-                    <div class="ot-acc-content">
-                        Cookie ini sangat diperlukan agar situs web dapat berfungsi dan tidak dapat dimatikan di sistem kami. Cookie ini biasanya hanya disetel sebagai respons atas tindakan yang Anda buat.
-                    </div>
-                </div>
-
-                <!-- Kategori 4: Social Media -->
-                <div class="ot-accordion" id="acc4">
-                    <div class="ot-acc-header" onclick="toggleAccordion('acc4')">
-                        <div class="ot-acc-title-area">
-                            <i class="fas fa-chevron-right ot-acc-icon"></i>
-                            <span>Social Media</span>
-                        </div>
-                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
-                            <label class="ot-switch">
-                                <input type="checkbox" id="chkSocial" checked>
-                                <span class="ot-slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="ot-acc-content">
-                        Cookie ini diatur oleh layanan media sosial yang telah kami tambahkan ke situs untuk memungkinkan Anda membagikan konten kami dengan teman dan jaringan Anda.
-                    </div>
-                </div>
-
-                <!-- Kategori 5: Marketing -->
-                <div class="ot-accordion" id="acc5">
-                    <div class="ot-acc-header" onclick="toggleAccordion('acc5')">
-                        <div class="ot-acc-title-area">
-                            <i class="fas fa-chevron-right ot-acc-icon"></i>
-                            <span>Marketing and Advertising</span>
-                        </div>
-                        <div class="ot-switch-wrap" onclick="event.stopPropagation()">
-                            <label class="ot-switch">
-                                <input type="checkbox" id="chkMarketing" checked>
-                                <span class="ot-slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="ot-acc-content">
-                        Cookie ini mungkin disetel melalui situs web kami oleh mitra iklan kami untuk membangun profil minat Anda dan menampilkan iklan yang relevan di situs lain.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="ot-footer">
-                <div class="ot-action-buttons">
-                    <button class="ot-btn ot-btn-reject" onclick="rejectAllCookies()">Reject All</button>
-                    <button class="ot-btn ot-btn-confirm" onclick="confirmChoices()">Confirm My Choices</button>
-                </div>
-                <div class="ot-powered">
-                    Powered by <b><i class="fas fa-shield-alt"></i> OneTrust</b>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
+    <!-- Skrip JavaScript Keranjang & Checkout -->
     <script>
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
+        let cart = [];
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('open');
         }
 
-        function toggleCookieModal() {
-            const modal = document.getElementById('cookieModal');
-            modal.classList.toggle('active');
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart();
         }
 
-        function toggleAccordion(id) {
-            const acc = document.getElementById(id);
-            acc.classList.toggle('open');
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
         }
 
-        function rejectAllCookies() {
-            document.getElementById('chkAnalytics').checked = false;
-            document.getElementById('chkFunctional').checked = false;
-            document.getElementById('chkSocial').checked = false;
-            document.getElementById('chkMarketing').checked = false;
-            alert('Semua cookie opsional berhasil ditolak.');
-            toggleCookieModal();
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalCount;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="font-size: 12px; opacity: 0.6; text-align: center; margin-top: 40px;">Keranjang belanja Anda masih kosong.</p>';
+                cartTotalPrice.textContent = 'Rp 0';
+                return;
+            }
+
+            let html = '';
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                totalPrice += item.price * item.quantity;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <div style="font-weight: bold;">${item.name}</div>
+                            <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}</div>
+                        </div>
+                        <button class="btn-remove" onclick="removeFromCart(${index})">Hapus</button>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = html;
+            cartTotalPrice.textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
         }
 
-        function confirmChoices() {
-            alert('Preferensi pilihan cookie Anda berhasil disimpan.');
-            toggleCookieModal();
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Keranjang belanja Anda masih kosong!');
+                return;
+            }
+            alert('Terima kasih! Pesanan Anda berhasil diproses.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
         }
     </script>
+
 </body>
 </html>
